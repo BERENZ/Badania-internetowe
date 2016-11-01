@@ -1,0 +1,102 @@
+--- 
+title: "Badania Internetowe"
+author: "Maciej Beręsewicz"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: BERENZ/Badania-internetowe
+description: "Materiały na zajęcia Badania Internetowe (Materials for Internet and web surveys class at Poznan University of Econimics and Business; in Polish)."
+---
+
+# Badania internetowe -- podstawowe wymagania
+
+Znajomość metody reprezentacyjnej, znajomość pakietu statystycznego R. Poniżej zebrane są najważniejsze punkty z sylabusa przedmiotu. Więcej szczegółów można znaleźć na [tej](http://esylabus.ue.poznan.pl/pl/II00S.22B.12709.16/rok/sylabus/22517) stronie.
+
+## Cele kształcenia dla modułu
+
+
++ **C1** -- Poznanie badań statystycznych prowadzonych przez Internet
++ **C2** -- Poznanie metod estymacji w przypadku badań statystycznych prowadzonych przez Internet
++ **C3** -- Poznanie technologii służących do prowadzenia badań statystycznych przez Internet
++ **C4** -- Nabycie umiejętności prowadzenia badań statystycznych przez Internet
++ **C5** -- Nabycie umiejętności oceny jakości badań statystycznych prowadzonych przez Internet
+
+## Efekty kształcenia dla modułu
+
+### Wiedza
+
++ **W1** -- Zna metody badań statystycznych prowadzonych przez Internet
++ **W2** -- Zna metody estymacji stosowane w przypadku badań statystycznych prowadzonych przez Internet
++ **W3** -- Zna metody korekty błędów nielosowych w przypadku badań statystycznych prowadzonych przez Internet
++ **W4** -- Zna technologie związane z przeprowadzaniem badań statystycznych przez Internet
++ **W5** -- Zna możliwości wykorzystania Big Data na potrzeby badań statystycznych
+
+### Umiejętności
+
++ **U1** -- Potrafi ocenić jakość badań statystycznych prowadzonych przez Internet
++ **U2** -- Potrafi przeprowadzać badanie statystyczne przez Internet
++ **U3** -- Potrafi interpretować wyniki przeprowadzonych analiz	
++ **U4** -- Potrafi zastosować nowoczesne technologie do przeprowadzania badań statystycznych
++ **U5** -- Potrafi zastosować odpowiednie metody estymacji w przypadku badań prowadzonych przez Internet
+
+### Kompetencje społeczne
+
++ **K1** -- Potrafi przygotować badanie statystyczne przez Internet
++ **K2** -- Jest świadomy przydatności metod statystycznych w prowadzeniu badań statystycznych przez Internet
++ **K3** -- Potrafi samodzielnie uzupełniać wiedzę z zakresu metod statystycznych
++ **K4** -- Potrafi samodzielnie uzupełniać wiedzę z zakresu narzędzi do prowadzenia badań statystycznych przez Internet
+
+## Treści programowe
+
+1.	Wprowadzenie do problematyki badań internetowych	
+2.	Konstrukcja badań internetowych (ankiety, zbieranie danych)	
+3.	Technologie internetowe w badaniach internetowych	
+4.	Znaczenie paradanych w badaniach internetowych	
+5.	Dobór próby w badaniach internetowych	
+6.	Jakość badań internetowych (błędy pokrycia, doboru i braki odpowiedzi)	
+7.	Reprezentatywność i jej pomiar w badaniach internetowych	
+8.	Metody ważenia danych (m.in. propensity score)	
+9.	Metody estymacji w badaniach internetowych	
+10.	Big data oraz Internetowe źródła danych w badaniach internetowych	
+11.	Pozyskiwanie i analiza danych z portali internetowych (m.in. web-scraping, wykorzystanie API)	
+12.	Profilowanie użytkowników w badaniach internetowych	
+13.	Google Trends, Google Analytics i inne narzędzia w badaniach internetowych
+
+## Literatura
+
+### Obowiązkowa
+
+1. Baker, R, J Michael Brick, Nancy A Bates, Mike Battaglia, Mick P Couper, Jill A Dever, Krista J Gile, and Roger Tourangeau (2013). Summary Report of the AAPOR task force on non-probability sampling. Journal of Survey Statistics and Methodology 1, pp. 90–143.
+2. Bethlehem, J. (2010). Selection Bias in Web Surveys. International Statistical Review, 78(2), 161–188. doi:10.1111/j.1751-5823.2010.00112.x.
+3. Bethlehem, J., & Biggignandi, S. (2012). Handbook of Web Surveys, John Wiley & Sons, Inc. doi:10.1086/318641.
+4. Callegaro M., Baker R., Bethlehem J., Göritz A.S., Krosnick J.A., Lavrakas P. J. (2014) Online Panel Research A Data Quality Perspective, Wiley.
+5. Lee, S. (2006). Propensity score adjustment as a weighting scheme for volunteer panel web surveys. Journal of Official Statistics, 22(2), 329–349.
+
+### Zalecana
+
+
+1. Japec, Lilli, Frauke Kreuter, Marcus Berg, Paul Biemer, Paul Decker, Cliff Lampe, Julia Lane, Cathy O’Neil, and Abe Usher (2015). Big Data in Survey Research AAPOR Task Force Report. Public Opinion Quarterly 79 (4), pp. 839–880.
+2. Schouten, B., Cobben, F., & Bethlehem, J. (2009). Indicators for the representativeness of survey response. Survey Methodology, 35(1), 101–113.
+3. Walston, J. T., Lissitz, R. W., & Rudner, L. M. (2006). The Influence of Web-based Questionnaire Presentation Variations on Survey Cooperation and Perceptions of Survey Quality. Journal of Official Statistics, 22(2), 271–291.
+4. Tourangeau R., Conrad F. G., Couper M. P. (2014) The Science of Web Surveys, Oxford.
+5. Beręsewicz, M. (2016). Internet data sources for real estate market statistics. Rozprawa Doktorska.
+6. Kreuter, F. (Ed.). (2013). Improving surveys with paradata: Analytic uses of process information (Vol. 581). John Wiley & Sons.
+
+
+## Wymagania dotyczące oprogramowania
+
+### Oprogramowanie
+
+Do odtworzenia przykładów użytych w poniższym skrypcie wystarczy podstawowa znajomość R. Aby zainstalować R oraz RStudio można skorzystać z poniższych odnośników:
+
+* R - https://cloud.r-project.org/
+* RStudio - https://www.rstudio.com/products/rstudio/download/
+
+### Wymagane pakiety R
+
+TBA
+

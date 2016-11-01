@@ -1,0 +1,8 @@
+# Ważenie danych
+
+## Propensity score weighting
+
+## Kalibracja
+
+
+## Dalsze kroki
