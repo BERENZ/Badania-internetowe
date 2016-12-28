@@ -98,5 +98,7 @@ Do odtworzenia przykładów użytych w poniższym skrypcie wystarczy podstawowa 
 
 ### Wymagane pakiety R
 
-TBA
+* `survey`, `laeken`
+* `rvest`, `jsonlite`, `tidyjson`
+
 

@@ -20,3 +20,4 @@ Materiały na zajęcia z Metody Reprezentacyjnej @ WIGE UEP
 ## Zaliczenie
 
 Projekt grupowy z prezentacją na zajęciach
+
