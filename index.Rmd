@@ -12,6 +12,17 @@ github-repo: BERENZ/Badania-internetowe
 description: "Materiały na zajęcia Badania Internetowe (Materials for Internet and web surveys class at Poznan University of Econimics and Business; in Polish)."
 ---
 
+```{r read-packages, include=FALSE}
+library(eurostat)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tidyjson)
+library(stringi)
+library(lubridate)
+knitr::opts_chunk$set(cache = TRUE)
+theme_set(theme_bw())
+```
 # Badania internetowe -- podstawowe wymagania
 
 Znajomość metody reprezentacyjnej, znajomość pakietu statystycznego R. Poniżej zebrane są najważniejsze punkty z sylabusa przedmiotu. Więcej szczegółów można znaleźć na [tej](http://esylabus.ue.poznan.pl/pl/II00S.22B.12709.16/rok/sylabus/22517) stronie.
