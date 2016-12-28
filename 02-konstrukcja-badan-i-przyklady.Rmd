@@ -1,3 +1,13 @@
 # Konstrukcja i przykłady badań
 
-Here is a review of existing methods.
+## Sposoby zbierania danych
+
+* CAI (Computer-assisted interviewing) -- A form of interviewing in which the questionnaire is not printed on paper. Questions are asked by a computer program 
+* CAPI (Computer-assisted personal interviewing) -- A form of face-to-face interviewing in which interviewers use a laptop computer to ask the questions and to record the answers.
+* CSAQ (Computer-assistedself-administeredquestionnaires) -- Aformofdata collection in which respondents complete the questionnaires on their own computer. See also CASI.
+* CASI (Computer-assisted self-interviewing) -- A form of data collection in which respondents complete the questionnaires on their own computer. See also CSAQ.
+* CATI (Computer-assisted telephone interviewing) -- A form of telephone interviewing in which interviewers use a computer to ask the questions and to record the answers.
+* CAWI (Computer-assisted web interviewing) -- A form of self-interviewing in which respondents complete the questionnaires on the Internet. CAWI is a synonym for web survey.
+* Face-to-face interviewing: A form of interviewing where interviewers visit the homes of the respondents (or another location convenient for the respondent). Together, the interviewer and the respondent complete the questionnaire.
+* Telephone interviewing: A form of interviewing in which interviewers call
+selected persons by telephone. If contact is made with the proper person, and this person wants to cooperate, the interview is started and conducted over the telephone.
