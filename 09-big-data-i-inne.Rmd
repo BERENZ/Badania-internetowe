@@ -1,5 +1,144 @@
 # Big data i inne nowe źródła danych
 
+## Przykłady zbieranych informacji
+
+### Facebook
+
+Za https://pl-pl.facebook.com/about/privacy#
+
+* To, co robisz oraz informacje, których dostarczasz
+* To, co robią inni i informacje, których dostarczają
+* Twoje sieci i połączenia
+* Informacje o płatnościach
+* Informacje o urządzeniach
+    + parametry systemu operacyjnego, wersje podzespołów, ustawienia urządzeń, nazwy i typy plików i oprogramowania, dane o stanie baterii i sile sygnału oraz identyfikatory urządzeń;
+    + położenie urządzeń, w tym ich lokalizacja geograficzna, określona na podstawie danych z systemu GPS, sygnału Bluetooth lub sieci Wi-Fi;
+    + informacje o połączeniach, w tym nazwa operatora sieci komórkowej lub dostawcy usług internetowych, typ przeglądarki, język i strefa czasowa, numer telefonu komórkowego i adres IP.
+* Informacje z korzystających z naszych usług aplikacji i witryn internetowych
+* Informacje od partnerów zewnętrznych
+* Firmy należące do Facebooka
+
+Za https://www.washingtonpost.com/news/the-intersect/wp/2016/08/19/98-personal-data-points-that-facebook-uses-to-target-ads-to-you/ oraz  http://www.spidersweb.pl/2016/08/facebook-inwigilacja.html
+
+Targeting options for Facebook advertisers*
+
+1. Location
+2. Age
+3. Generation
+4. Gender
+5. Language
+6. Education level
+7. Field of study
+8. School
+9. Ethnic affinity
+10. Income and net worth
+11. Home ownership and type
+12. Home value
+13. Property size
+14. Square footage of home
+15. Year home was built
+16. Household composition
+17. Users who have an anniversary within 30 days
+18. Users who are away from family or hometown
+19. Users who are friends with someone who has an anniversary, is newly married or engaged, recently moved, or has an upcoming birthday
+20. Users in long-distance relationships
+21. Users in new relationships
+22. Users who have new jobs
+23. Users who are newly engaged
+24. Users who are newly married
+25. Users who have recently moved
+26. Users who have birthdays soon
+27. Parents
+28. Expectant parents
+29. Mothers, divided by “type” (soccer, trendy, etc.)
+30. Users who are likely to engage in politics
+31. Conservatives and liberals
+32. Relationship status
+33. Employer
+34. Industry
+35. Job title
+36. Office type
+37. Interests
+38. Users who own motorcycles
+39. Users who plan to buy a car (and what kind/brand of car, and how soon)
+40. Users who bought auto parts or accessories recently
+41. Users who are likely to need auto parts or services
+42. Style and brand of car you drive
+43. Year car was bought
+44. Age of car
+45. How much money user is likely to spend on next car
+46. Where user is likely to buy next car
+47. How many employees your company has
+48. Users who own small businesses
+49. Users who work in management or are executives
+50. Users who have donated to charity (divided by type)
+51. Operating system
+52. Users who play canvas games
+53. Users who own a gaming console
+54. Users who have created a Facebook event
+55. Users who have used Facebook Payments
+56. Users who have spent more than average on Facebook Payments
+57. Users who administer a Facebook page
+58. Users who have recently uploaded photos to Facebook
+59. Internet browser
+60. Email service
+61. Early/late adopters of technology
+62. Expats (divided by what country they are from originally)
+63. Users who belong to a credit union, national bank or regional bank
+64. Users who investor (divided by investment type)
+65. Number of credit lines
+66. Users who are active credit card users
+67. Credit card type
+68. Users who have a debit card
+69. Users who carry a balance on their credit card
+70. Users who listen to the radio
+71. Preference in TV shows
+72. Users who use a mobile device (divided by what brand they use)
+73. Internet connection type
+74. Users who recently acquired a smartphone or tablet
+75. Users who access the Internet through a smartphone or tablet
+76. Users who use coupons
+77. Types of clothing user’s household buys
+78. Time of year user’s household shops most
+79. Users who are “heavy” buyers of beer, wine or spirits
+80. Users who buy groceries (and what kinds)
+81. Users who buy beauty products
+82. Users who buy allergy medications, cough/cold medications, pain relief products, and over-the-counter meds
+83. Users who spend money on household products
+84. Users who spend money on products for kids or pets, and what kinds of pets
+85. Users whose household makes more purchases than is average
+86. Users who tend to shop online (or off)
+87. Types of restaurants user eats at
+88. Kinds of stores user shops at
+89. Users who are “receptive” to offers from companies offering online auto insurance, higher education or mortgages, and prepaid debit cards/satellite TV
+90. Length of time user has lived in house
+91. Users who are likely to move soon
+92. Users who are interested in the Olympics, fall football, cricket or Ramadan
+93. Users who travel frequently, for work or pleasure
+94. Users who commute to work
+95. Types of vacations user tends to go on
+96. Users who recently returned from a trip
+97. Users who recently used a travel app
+98. Users who participate in a timeshare
+
+### Twitter
+
+Za https://twitter.com/privacy?lang=en
+
++ Basic Account Information
++ Contact Information
++ Additional Information (eg. address book)
++ Tweets, Following, Lists, Profile, and other Public Information
++ Direct Messages and Non-Public Communications
++ Location Information
++ Links
++ Cookies
++ Using Our Services
++ Widget Data
++ Commerce Services
++ Advertising
++ Third-Parties and Affiliates
+
 ## Znaczenie nowych źródeł danych
 
 ## Big data oraz ich wykorzystanie
