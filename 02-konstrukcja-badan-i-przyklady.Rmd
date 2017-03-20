@@ -11,3 +11,158 @@
 * Face-to-face interviewing: A form of interviewing where interviewers visit the homes of the respondents (or another location convenient for the respondent). Together, the interviewer and the respondent complete the questionnaire.
 * Telephone interviewing: A form of interviewing in which interviewers call
 selected persons by telephone. If contact is made with the proper person, and this person wants to cooperate, the interview is started and conducted over the telephone.
+
+## Konstrukcja badań
+
+### Przykłady formularzy
+
+Badania realizowane przez GUS:
+
+http://form.stat.gov.pl/BadaniaAnkietowe/2017/harmonogram.htm
+
+Kwestionariusze badania Obiegi Kultury realizowanego przez Centrum Cyfrowe
+
+http://obiegikultury.centrumcyfrowe.pl
+
+
+### Jak przygotowywać kwestionariusz?
+
+@krosnick2010question rekomendują używanie następujących elementów przy tworzeniu kwestionarisza:
+
++ prostych słów (bez żargonu naukowego, slangu)
++ prostej składni
++ jasnych sformułowań
++ jasnych i wykluczających się nazwajem odpowiedzi na pytania
++ pytania powinny mierzyć tylko jeden wymiar
+
+Źle zadane pytania mogą prowadzić do błędów pomiaru (ang. *measurement error*). Przez ten błąd rozumiemy różnicę między wartością obserwowaną, a wartością prawdziwą (np. opinia vs tweet, bezrobocie rejestrowane vs bezrobocie faktyczne).
+
+### Model kognitywny w procesie odpowiedzi na pytania
+
+Kognitywny -- mający związek z poznawaniem świata lub badaniem procesów poznawczych
+
+@tourangeau2010psychology wskazali następujące elementy
+
++ zrozumienie pytania (ang *comprehension of the question*),
++ wydobywanie odpowiednich informacji z pamięci (ang. *retrieval of the relevant information from memory*),
++ ocena informacji (ang. *judgement of the retrived information*),
++ odpowiedź (ang. *response*).
+
+### Odpowiedzi typu "Nie wiem, nie mam opinii"
+
+Badacze [@krosnick1991response, @krosnick2002impact] wskazują, że nie powinno stosować się odpowiedzi niemerytorycznych w postaci 'nie wiem' czy 'nie mam opinii'. Wskazują, że te odpowiedzi wpływają na niską jakość odpowiedzi.
+
+@krosnick2010question wskazali, że generalnie tego typu odpowiedzi powinny być unikane w badaniach. 
+
+Wskazuje się jednak, że te odpowiedzi można używać w następujących przypadkach:
+
++ jeżeli uważamy, że ta odpowiedź ma znaczenie (badamy niezdecydowanie),
++ jeżeli pytanie odnosi się do wiedzy respondenta (może czegoś nie wiedzieć).
+
+### Jak ludzie przeglądają strony internetowe?
+
+Okulografia (ang. *eye tracking*, śledzenie ruchów gałek ocznych) – technika stosowana od ponad 100 lat w takich dziedzinach, jak psychologia, medycyna, ergonomia, interakcja człowiek-komputer czy marketing.
+
+Wyróżniamy trzy, najbardziej popularne typy okulografów:
+
++ Wykorzystujące nakładkę na gałkę oczną
++ Druga, szeroka kategoria to okulografy wykorzystujące optyczne, bezkontaktowe (niezależne od badanego) metody pomiaru ruchu oka
++ Trzecia kategoria okulografów wykorzystuje potencjał elektryczny mierzony przy użyciu elektrod umieszczonych wokół oczu
+
+https://youtu.be/eABZnmmO2NA
+
+
+### Typy pytań
+
+
+Zobaczmy, jakie pytania występują najczęściej na podstawie @callegaro2015web, rozdział 2.
+
+Table 1: “Question type” relative frequencies among 487,117 questions in 1KA web questionnaires 2008-2014.
+
+| “Question Type” | Radio buttons |
+|-----------------|---------------|
+|Radio buttons | 47.7%| 
+|Tables of radio buttons|17.7%| 
+|Text box|14.8%|
+|Checkbox|9.7%|
+|Open-ended numeric entry |4.7%|
+|Drop-down menu|1.2%|
+|Table of open-ended text entries |1.1%|
+|Table of open-ended numeric entries | 0.9%|
+|Table of checkboxes|0.8%|
+|Ranking|0.5%|
+|Combined table|0.3%|
+|Date|0.2%|
+|Constant sum|0.2%|
+|TOTAL|100%|
+
+
+```{r, out.width = "1000px", fig.cap='Radio buttons'}
+knitr::include_graphics("https://i.stack.imgur.com/Ngv2E.png")
+```
+
+```{r, out.width = "1000px", fig.cap='Tables of radio buttons'}
+knitr::include_graphics("https://i.stack.imgur.com/yn0Dj.png")
+```
+
+
+```{r, out.width = "1000px", fig.cap='Text box'}
+knitr::include_graphics("http://fluidsurveys.com/wp-content/uploads/2009/11/Screen-shot-2012-05-15-at-4.48.58-PM.png")
+```
+
+```{r, out.width = "1000px", fig.cap='Checkbox'}
+knitr::include_graphics("https://fluidsurveys.com/wp-content/uploads/2009/11/56.png")
+```
+
+
+```{r, out.width = "1000px", fig.cap='Open-ended numeric entry'}
+knitr::include_graphics("https://www.survata.com/assets/capabilities/question-types/numeric-input.jpg")
+```
+
+```{r, out.width = "1000px", fig.cap='Drop-down menu'}
+knitr::include_graphics("https://fluidsurveys.com/wp-content/uploads/2009/11/55.png")
+```
+
+
+### Elementy kwestionariusza
+
+1. Układ i kolejność pytań
+
++ układ pytań wpływa na tzw efekt kontekstu (ang. *context effect*),
++ pytania powinny być grupowane według tematu 
++ na początku należy umieścić krótki opis badania (zaproszenie)
++ nie powinno być za dużo tabel oraz rozdzielania każdego pytania na nową stronę
+
+2. Podział na strony
++ one-page design (scrolling) vs one-question-per-page design (paging) -- pierwsze badania nie wskazały na znaczącą różnicę między dwoma typami w przypadku 7 minutowego badania na tematy ogólne [@manfreda2002design, @ritterband2009behavior,@toepoel2009design]
++ stronicowanie (paging) przypomina badanie, które jest realizowane przez ankietera
++ badania wskazują jednak, że paging wpływa na wzrost obciązenia respondenta oraz rozciągnięcie czasu odpowiedzi [@couper2001web, @manfreda2002design, @toepoel2009design]
+
+3. Nawigacja
++ kwestionariusze w wersji paging powinny mieć przyciski "w przód", "w tył"
+
+4. Progress bar
++ jeżeli nie ma tego elementu respondenci narzekają na jego brak [@manfreda2002design]
++ badania nie wskazują, że jego brak wpływa na sposób wypełniania ankiety
+
+5. Długość kwestionariusza:
++ długie kwestionariusz wpływają na zmniejszenie zaangażowania oraz zwrot ankiety,
++ postrzeganie długości kwestionariusza jest relatywne,
++ badania wskazują, że jakość odpowiedzi spada po około 20 min (chociaż są wyjątki por. European Social Survey).
+
+
+5. Narzędzi big data -- nowy typ kwestionariusza
+
+
+
+
++ 
+
+
+
+
+
+
+
+
+

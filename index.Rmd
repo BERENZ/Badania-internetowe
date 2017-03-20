@@ -20,7 +20,8 @@ library(tidyr)
 library(tidyjson)
 library(stringi)
 library(lubridate)
-knitr::opts_chunk$set(cache = TRUE)
+library(jsonlite)
+knitr::opts_chunk$set(cache = TRUE, echo = FALSE)
 theme_set(theme_bw())
 ```
 # Badania internetowe -- podstawowe wymagania

@@ -1,1 +1,18 @@
 # Technologie w badaniach internetowych
+
+## XML
+
+## JSON
+
+```{r}
+zalando <- 'https://api.zalando.com/articles'
+zalando_df <- fromJSON(zalando)
+
+## 
+
+str(zalando_df,1)
+
+str(zalando_df$content,1)
+```
+
+
