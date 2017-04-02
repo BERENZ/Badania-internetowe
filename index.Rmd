@@ -24,6 +24,10 @@ library(jsonlite)
 knitr::opts_chunk$set(cache = TRUE, echo = FALSE)
 theme_set(theme_bw())
 ```
+
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bv}{\boldsymbol{v}}
+
 # Badania internetowe -- podstawowe wymagania
 
 Znajomość metody reprezentacyjnej, znajomość pakietu statystycznego R. Poniżej zebrane są najważniejsze punkty z sylabusa przedmiotu. Więcej szczegółów można znaleźć na [tej](http://esylabus.ue.poznan.pl/pl/II00S.22B.12709.16/rok/sylabus/22517) stronie.
@@ -64,19 +68,19 @@ Znajomość metody reprezentacyjnej, znajomość pakietu statystycznego R. Poni�
 
 ## Treści programowe
 
-1.	Wprowadzenie do problematyki badań internetowych	
-2.	Konstrukcja badań internetowych (ankiety, zbieranie danych)	
-3.	Technologie internetowe w badaniach internetowych	
-4.	Znaczenie paradanych w badaniach internetowych	
-5.	Dobór próby w badaniach internetowych	
-6.	Jakość badań internetowych (błędy pokrycia, doboru i braki odpowiedzi)	
-7.	Reprezentatywność i jej pomiar w badaniach internetowych	
-8.	Metody ważenia danych (m.in. propensity score)	
-9.	Metody estymacji w badaniach internetowych	
-10.	Big data oraz Internetowe źródła danych w badaniach internetowych	
-11.	Pozyskiwanie i analiza danych z portali internetowych (m.in. web-scraping, wykorzystanie API)	
-12.	Profilowanie użytkowników w badaniach internetowych	
-13.	Google Trends, Google Analytics i inne narzędzia w badaniach internetowych
++ Wprowadzenie do problematyki badań internetowych.
++ Konstrukcja badań internetowych (ankiety, zbieranie danych)	.
++ Dobór próby w badaniach internetowych.
++ Jakość badań internetowych (błędy pokrycia, doboru i braki odpowiedzi).	
++ Reprezentatywność i jej pomiar w badaniach internetowych.
++ Metody ważenia danych (m.in. propensity score).
++ Metody estymacji w badaniach internetowych.	
++ Znaczenie paradanych w badaniach internetowych.	
++ Big data oraz Internetowe źródła danych w badaniach internetowych.
++ Technologie internetowe w badaniach internetowych.
++ Pozyskiwanie i analiza danych z portali internetowych (m.in. web-scraping, wykorzystanie API).
++ Profilowanie użytkowników w badaniach internetowych.
++ Google Trends, Google Analytics i inne narzędzia w badaniach internetowych.
 
 ## Literatura
 

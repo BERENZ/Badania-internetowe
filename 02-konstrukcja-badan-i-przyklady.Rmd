@@ -151,12 +151,8 @@ knitr::include_graphics("https://fluidsurveys.com/wp-content/uploads/2009/11/55.
 + badania wskazują, że jakość odpowiedzi spada po około 20 min (chociaż są wyjątki por. European Social Survey).
 
 
-5. Narzędzi big data -- nowy typ kwestionariusza
+6. Narzędzi big data -- nowy typ kwestionariusza
 
-
-
-
-+ 
 
 
 

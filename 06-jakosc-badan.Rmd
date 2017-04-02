@@ -1,9 +1,190 @@
 # Jakość badań internetowych
 
-## Błąd pomiaru
+## Reprezentatywność
 
-## Braki danych
+### Rozgrzewka
 
-## Braki odpowiedzi
+Za słownikiem PWN (źródło: http://sjp.pwn.pl/sjp/reprezentatywny;2515040.html)
 
-## Dalsze kroki
++ **reprezentatywny** «mający cechy charakterystyczne dla jakiejś zbiorowości» (reprezentatywnie, reprezentatywność)
+
+W polskiej statystyce publicznej nie znajdziemy dokładnej definicji reprezentatywności, natomiast pojawia się w opisie badań, na przykład:
+
++ Badanie EU-SILC jest dobrowolnym, `reprezentacyjnym` badaniem ankietowym prywatnych gospodarstw domowych, realizowanym techniką bezpośredniego wywiadu z respondentem.
++ Badanie Aktywności Ekonomicznej Ludności przeprowadzane jest `metodą reprezentacyjną`, a wyniki badania uogólniane są na populację generalną. Z uwagi na reprezentacyjną metodę badania zalecana jest ostrożność w posługiwaniu się danymi w tych przypadkach, gdy zastosowano bardziej szczegółowe podziały i występują liczby niskiego rzędu (mniejsze niż 15 tys.). 
+
+
+W przypadku badań produktów pojawia się również stwierdzenie: **Reprezentant wyrobów lub usług**, który definiowany jest następująco:
+
++ Produkt (wyrób lub usługa) o precyzyjnie określonej nazwie, typie, podstawowych parametrach techniczno-eksploatacyjnych, a także jednostce miary, wytypowany do określonego badania statystycznego.
+
+Źródło: http://stat.gov.pl/metainformacje/slownik-pojec/pojecia-stosowane-w-statystyce-publicznej/431,pojecie.html
+
+
+### Formalne definicje
+
+@kruskal1979a, @kruskal1979b, @kruskal1979c, na podstawie uwczesniej przeglądu literatury, podali następujące definicje reprezentatywności:
+
++ general, unjustified acclaim for the data
++ absence of selective forces
++ mirror or miniature of the population
++ typical or ideal case(s)
++ coverage of the population
++ a~vague term to be made precise
++ representative sampling as a~specific sampling method 
++ representative sampling as permitting good estimation
++ representative sampling as good enough for a~particular purpose
+
+@schouten2009 zaproponował dwie definicje reprezentatywności w odniesieniu do odpowiedzi (ang. survey response), które można ująć w kontekście *absence of selective forces*, mianowicie:
+
+
+#### Silna i słaba reprezentatywność odpowiedzi
+
+1. Silna reprezentatywność:
+
+Podzbiór respondentów z próby jest reprezentatywny jeżeli skłonność do odpowiedzi w badaniu (ang. propensity to respond) $\rho_i$ jest takie samo dla wszystkich jednostek w populacji:
+
+$$
+	\forall_i \; E(R_i) = \rho_i = P( R_i  = 1  \mid  I_i = 1) = \rho
+	\label{def-strong}
+$$
+
+and if the response of a~unit is independent of the response of all other units [@schouten2009]. Gdzie $R_i$ oraz $I_i$ są zmiennymi indykatorowymi, które oznaczają odpowiedź ($R_i=1$) lub jej brak  ($R_i=0$)  oraz inkuzję do próby lu jej brak ($I_i=0$). 
+
+2. Słaba reprezentatywność
+
+Podzbiór respondentów jest reprezentatywny w odniesieniu do pewnej cechy jakościowej $\bx$ jeżeli średnia skłonność do odpowiedzi w badaniu jest stała 
+
+$$
+\bar{\rho}_h  = \frac{1}{N_h}\sum_{i=1}^{N_h} \rho_{ih} = \rho, \mbox{for $h=1,2,...,H$}
+\label{def-weak}
+$$
+  
+gdzie $N_h$ jest wielkością populacji w ramach kategorii $h$, $\rho_{ih}$ jest skłonnością do odpowiedzi jednostki $i$ w ramach $h$-tej kategorii cechy $\bx$.
+
+#### Miniatura populacji
+
+Próba może być rozpatrywana jako miniatura populacji. W tym kontekście @bethlehem2009 zaproponował następujące definicje reprezentatywności próby
+
+1. Próba jest reprezentatywna w odniesieniu do zmiennych pomocniczych ($\bx$) jeżeli rozkład cechy $\bx$ w próbie jest równy rozkładowi tej cechy w populacji przy założeniu losowego doboru próby
+
+$$
+f_s(\bx, I_{i} = 1) = f_{\Omega}(\bx),
+\label{definition-betlehem}
+$$
+
+gdzie $f$ oznacza funkcję gęstości, a $I_{i}$ jest zdefiniowane jak poprzednio. Zmiennymi pomocniczymi $\bx$ mogą być cechy demograficzne (płeć, wiek), edukacja czy stan cywilny.
+
+2. Próba jest reprezentatywna w odniesieniu do zmiennych pomocniczych ($\bx$) jeżeli rozkład warunkowy cechy $\bx$ względem $w$ jest równy znanym wartościom globalnym (rozkładowi brzegowemu) tych cech w populacji generalnej.
+
+$$
+f_s(\bx | w_i, I_{i} = 1) = f_{\Omega}(\bx),
+\label{definition-betlehem2}
+$$
+
+gdzie $w_i$ oznacza pewną wagę przypisaną danej jednostce $i$, którą może być zarówno odwrotność prawdopodobieństwa dostania się do próby $w_i = d_i = 1 / \pi_i$ czy wagi post-stratyfikowane czy kalibrowane.
+
+#### Representative sampling as permitting good estimation
+
+Na podstawie @pfeffermann2011modelling można wskazać pojęcie reprezentatywnego modelu, które może być zdefiniowane następująco:
+
+Model jest reprezentatywny, wtedy i tylko wtedy gdy rozkład warunkowy cechy $y$ pod warunkiem $\bx$ jest taki sam w próbie i populacji. To znaczy, $f_{s}(y_i | \bx_i) =  f_{\Omega}(y_i | \bx_i)$ tylko gdy
+
+$$
+Pr(R_i = 1 \mid \bx_i, y_i, I_i = 1)  = Pr(R_i = 1 \mid  \bx_i, I_i = 1).
+(\#eq:pfeffermann-equality)
+$$
+
+Pojęcie reprezentatywnego modelu możemy zapisać następująco:
+
+$$
+f_{s}(y_i | \bx_i) ={}  
+f(y_i | \bx_i, I_i = 1, R_i=1) =  
+\frac{Pr(R_i=1 \mid \bx_i, y_{i}, I_i=1)f_{\Omega}(y_i | \bx_i)}{Pr(R_i = 1 | \bx_i, I_i = 1)},
+(\#eq:def-pfefferman-modelling)
+$$
+
+gdzie $f$ jest warunkową funkcją gęstości, $f_{s}(y_i | \bx_i)$ jest rozkładem warunkowym w próbie, $f_{\Omega}(y_i | \bx_i)$ jest rozkładem warunkowym w populacji, a pozostałe elementy zdefiniowane są jak poprzednio.
+
+Pytanie, co oznacza \@ref(eq:pfeffermann-equality)? 
+
+### Problem braków danych
+
+## Jak badać reprezentatywność?
+
+
+### Ocena obciążenia
+
+@bethlehem2010selection przedstawił następujące miary, które możemy wykorzystać do oceny obciążenia, a przez to reprezentatywności danej próby
+
+```{definition, bias1, name = "Obciążenie wynikające jedynie z błędu pokrycia", echo = TRUE}
+
+$$
+B(\bar{y}) = E(\bar{y}) - \bar{Y} = \bar{Y}_{I} - \bar{Y} = \frac{N_{NI}}{N}(\bar{Y}_{I} - \bar{Y}_{NI}),
+$$
+
+gdzie:
+
++ $\bar{y}$ estymator średniej,
++ $\bar{Y}=1/N\sum_{i=1}^{N} Y_i$ średnia wartość cechy $Y$ -- wartość prawdziwa
++ $\bar{Y}_{I} = 1/N_I\sum_{i=1}^N I_iY_i$ średnia wartość cechy $Y$ dla populacji Internetowej
++ $\bar{Y}_{NI}$ średnia wartość cechy $Y$ dla populacji bez dostępu do Internetu
++ $N_{NI}$ wielkość populacji bez internetu 
+```
+
+Wielkość \@ref(def:bias1) zależy od:
+
++ $N_{NI}/N$,
++ $\bar{Y}_{I} - \bar{Y}_{NI}$ 
+
+```{definition, bias2, name = "Obciążenie wynikające jedynie z błędu autoselekcji", echo = TRUE}
+
+$$
+B(\bar{y}) = E(\bar{y}) - \bar{Y}_{I} \approx \frac{R(\rho,Y)s_\rho s_Y}{\bar{\rho}},
+$$
+
+gdzie:
+
++ $R(\rho,Y)$ to korelacja między skłonnością do odpowiedzi ($\rho$), a cechą $Y$,
++ $s_\rho$ odchylenie standardowe skłonności do odpowiedzi
++ $s_Y$ odchylenie standardowe cechy $y$,
++ $\bar{y}$ średnia skłonność do odpowiedzi,
++ $\bar{y} = 1/n_r\sum_{i=1}^Nr_iY_i$ estymator średniej $y$ oparty jedynie na próbie respondentów. Wartość oczekiwana dana jest wzorem:
+
+$$
+E(\bar{y}) \approx \frac{1}{N_i \bar{\rho}}\sum_{i=1}^N\rho_iI_iY_i.
+$$
+```
+
+
+Wielkość \@ref(def:bias2) zależy od:
+
++ korelacji między $R(\rho,Y)$ im wyższa, tym większe obciążenie,
++ od wariancji $\rho$ i badanej cechy.
+
+
+
+```{definition, bias3, name = "Obciążenie wynikające z obydwu powyższych błędów", echo = TRUE}
+
+$$
+B(\bar{y}) \approx \frac{N_{NI}}{N}(\bar{Y}_{I} - \bar{Y}_{NI}) + \frac{R(\rho,Y)s_\rho s_Y}{\bar{\rho}}
+$$
+
+```
+
+
+### Porównanie rozkładów cechy $\bx$ i $y$
+
+### Modelowanie błędu pokrycia (dostępu do Internetu)
+
+### Skłonność do odpowiedzi (propensity to respond)
+
+In order to obtain these propensities the following issues should be considered:
+
++ information about other data sources may be required,
++ strong auxiliary variables $\bx$ that explain $y$ should be available,
++ other variables, e.g. from paradata ($\bv$), that explain the selection and response mechanism should be available,
++ the relationship between the selection / response mechanism and the target variable $y$ should be checked,
++ population totals or means for auxiliary variables (or proxies, as shown in @reilly2001) should be known.
+
+
