@@ -14,7 +14,7 @@ W polskiej statystyce publicznej nie znajdziemy dokładnej definicji reprezentat
 + Badanie Aktywności Ekonomicznej Ludności przeprowadzane jest `metodą reprezentacyjną`, a wyniki badania uogólniane są na populację generalną. Z uwagi na reprezentacyjną metodę badania zalecana jest ostrożność w posługiwaniu się danymi w tych przypadkach, gdy zastosowano bardziej szczegółowe podziały i występują liczby niskiego rzędu (mniejsze niż 15 tys.). 
 
 
-W przypadku badań produktów pojawia się również stwierdzenie: **Reprezentant wyrobów lub usług**, który definiowany jest następująco:
+W przypadku badań m.in. inflacji pojawia się również stwierdzenie: **Reprezentant wyrobów lub usług**, który definiowany jest następująco:
 
 + Produkt (wyrób lub usługa) o precyzyjnie określonej nazwie, typie, podstawowych parametrach techniczno-eksploatacyjnych, a także jednostce miary, wytypowany do określonego badania statystycznego.
 
@@ -25,20 +25,21 @@ W przypadku badań produktów pojawia się również stwierdzenie: **Reprezentan
 
 @kruskal1979a, @kruskal1979b, @kruskal1979c, na podstawie uwczesniej przeglądu literatury, podali następujące definicje reprezentatywności:
 
-+ general, unjustified acclaim for the data
-+ absence of selective forces
-+ mirror or miniature of the population
-+ typical or ideal case(s)
-+ coverage of the population
-+ a~vague term to be made precise
-+ representative sampling as a~specific sampling method 
-+ representative sampling as permitting good estimation
-+ representative sampling as good enough for a~particular purpose
-
-@schouten2009 zaproponował dwie definicje reprezentatywności w odniesieniu do odpowiedzi (ang. survey response), które można ująć w kontekście *absence of selective forces*, mianowicie:
++ ogólne, nieuzasadnione twierdzenie o danych  (ang. general, unjustified acclaim for the data)
++ losowy doboru do próby (ang. absence of selective forces)
++ miniatura populacji (ang. mirror or miniature of the population)
++ typowa jednostka (ang. typical or ideal case(s))
++ pokrycie populacji (ang. coverage of the population)
++ termin bez uzasadnienia (ang. a~vague term to be made precise)
++ określona metoda doboru próby (ang. representative sampling as a~specific sampling method)
++ pozwala na nieobciążoną estymację (ang. representative sampling as permitting good estimation)
++ dobór próby odpowiedni do danego problemu (ang. representative sampling as good enough for a~particular purpose)
 
 
 #### Silna i słaba reprezentatywność odpowiedzi
+
+@schouten2009 zaproponował dwie definicje reprezentatywności w odniesieniu do odpowiedzi (ang. survey response), które można ująć w kontekście losowego doboru do próby (braku autoselekcji), mianowicie:
+
 
 1. Silna reprezentatywność:
 
@@ -84,7 +85,7 @@ $$
 
 gdzie $w_i$ oznacza pewną wagę przypisaną danej jednostce $i$, którą może być zarówno odwrotność prawdopodobieństwa dostania się do próby $w_i = d_i = 1 / \pi_i$ czy wagi post-stratyfikowane czy kalibrowane.
 
-#### Representative sampling as permitting good estimation
+#### Reprezentatywny model
 
 Na podstawie @pfeffermann2011modelling można wskazać pojęcie reprezentatywnego modelu, które może być zdefiniowane następująco:
 
@@ -104,14 +105,32 @@ f(y_i | \bx_i, I_i = 1, R_i=1) =
 (\#eq:def-pfefferman-modelling)
 $$
 
-gdzie $f$ jest warunkową funkcją gęstości, $f_{s}(y_i | \bx_i)$ jest rozkładem warunkowym w próbie, $f_{\Omega}(y_i | \bx_i)$ jest rozkładem warunkowym w populacji, a pozostałe elementy zdefiniowane są jak poprzednio.
+gdzie $f_{s}(y_i | \bx_i)$ jest rozkładem warunkowym w próbie, $f_{\Omega}(y_i | \bx_i)$ jest rozkładem warunkowym w populacji, a pozostałe elementy zdefiniowane są jak poprzednio.
 
 Pytanie, co oznacza \@ref(eq:pfeffermann-equality)? 
 
+```{r, out.width = "1000px", fig.cap='Zależność między cechą X a Y i wpływ na obciązenie i wariancję estymatorów'}
+knitr::include_graphics("imgs/zhang-relation.png")
+```
+
 ### Problem braków danych
 
-## Jak badać reprezentatywność?
+Przykłady braków danych (za @little2014statistical)
 
+
+```{r, out.width = "1000px", fig.cap='Przykłady mechanizmów braków danych'}
+knitr::include_graphics("imgs/little-missing-data.png")
+```
+
+@rubin1976inference zdefiniował następujące mechanizmy braków danych:
+
+1. Braki danych są całkowicie losowe (ang. Missing Completely at Random, MCAR) -- If the probability of being missing is the same for all cases, then the data are said to be missing completely at random. This effctively implies that causes of the missing data are unrelated to the data.
+2. Braki są losowe (ang. missing at Random, MAR) --  If the probability of being missing is the same only within groups defined by the observed data. 
+2. Braki danych nie są losowe (ang. missing Not at Random, MNAR) -- That is, the response propensity depends upon the unknown values of Y.
+
+Note that both MAR and MNAR are unverifiable assumptions based on the observed data
+
+## Jak badać reprezentatywność?
 
 ### Ocena obciążenia
 
@@ -171,7 +190,6 @@ B(\bar{y}) \approx \frac{N_{NI}}{N}(\bar{Y}_{I} - \bar{Y}_{NI}) + \frac{R(\rho,Y
 $$
 
 ```
-
 
 ### Porównanie rozkładów cechy $\bx$ i $y$
 

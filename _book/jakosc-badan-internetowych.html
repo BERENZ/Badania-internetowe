@@ -26,7 +26,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-04-02">
+<meta name="date" content="2017-04-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -192,7 +192,7 @@
 <li>Badanie EU-SILC jest dobrowolnym, <code>reprezentacyjnym</code> badaniem ankietowym prywatnych gospodarstw domowych, realizowanym techniką bezpośredniego wywiadu z respondentem.</li>
 <li>Badanie Aktywności Ekonomicznej Ludności przeprowadzane jest <code>metodą reprezentacyjną</code>, a wyniki badania uogólniane są na populację generalną. Z uwagi na reprezentacyjną metodę badania zalecana jest ostrożność w posługiwaniu się danymi w tych przypadkach, gdy zastosowano bardziej szczegółowe podziały i występują liczby niskiego rzędu (mniejsze niż 15 tys.).</li>
 </ul>
-<p>W przypadku badań produktów pojawia się również stwierdzenie: <strong>Reprezentant wyrobów lub usług</strong>, który definiowany jest następująco:</p>
+<p>W przypadku badań m.in. inflacji pojawia się również stwierdzenie: <strong>Reprezentant wyrobów lub usług</strong>, który definiowany jest następująco:</p>
 <ul>
 <li>Produkt (wyrób lub usługa) o precyzyjnie określonej nazwie, typie, podstawowych parametrach techniczno-eksploatacyjnych, a także jednostce miary, wytypowany do określonego badania statystycznego.</li>
 </ul>
@@ -202,19 +202,19 @@
 <h3><span class="header-section-number">7.1.2</span> Formalne definicje</h3>
 <p><span class="citation">Kruskal and Mosteller (<a href="#ref-kruskal1979a">1979</a><a href="#ref-kruskal1979a">a</a>)</span>, <span class="citation">Kruskal and Mosteller (<a href="#ref-kruskal1979b">1979</a><a href="#ref-kruskal1979b">b</a>)</span>, <span class="citation">Kruskal and Mosteller (<a href="#ref-kruskal1979c">1979</a><a href="#ref-kruskal1979c">c</a>)</span>, na podstawie uwczesniej przeglądu literatury, podali następujące definicje reprezentatywności:</p>
 <ul>
-<li>general, unjustified acclaim for the data</li>
-<li>absence of selective forces</li>
-<li>mirror or miniature of the population</li>
-<li>typical or ideal case(s)</li>
-<li>coverage of the population</li>
-<li>a~vague term to be made precise</li>
-<li>representative sampling as a~specific sampling method</li>
-<li>representative sampling as permitting good estimation</li>
-<li>representative sampling as good enough for a~particular purpose</li>
+<li>ogólne, nieuzasadnione twierdzenie o danych (ang. general, unjustified acclaim for the data)</li>
+<li>losowy doboru do próby (ang. absence of selective forces)</li>
+<li>miniatura populacji (ang. mirror or miniature of the population)</li>
+<li>typowa jednostka (ang. typical or ideal case(s))</li>
+<li>pokrycie populacji (ang. coverage of the population)</li>
+<li>termin bez uzasadnienia (ang. a~vague term to be made precise)</li>
+<li>określona metoda doboru próby (ang. representative sampling as a~specific sampling method)</li>
+<li>pozwala na nieobciążoną estymację (ang. representative sampling as permitting good estimation)</li>
+<li>dobór próby odpowiedni do danego problemu (ang. representative sampling as good enough for a~particular purpose)</li>
 </ul>
-<p><span class="citation">Schouten, Cobben, and Bethlehem (<a href="#ref-schouten2009">2009</a>)</span> zaproponował dwie definicje reprezentatywności w odniesieniu do odpowiedzi (ang. survey response), które można ująć w kontekście <em>absence of selective forces</em>, mianowicie:</p>
 <div id="silna-i-saba-reprezentatywnosc-odpowiedzi" class="section level4">
 <h4><span class="header-section-number">7.1.2.1</span> Silna i słaba reprezentatywność odpowiedzi</h4>
+<p><span class="citation">Schouten, Cobben, and Bethlehem (<a href="#ref-schouten2009">2009</a>)</span> zaproponował dwie definicje reprezentatywności w odniesieniu do odpowiedzi (ang. survey response), które można ująć w kontekście losowego doboru do próby (braku autoselekcji), mianowicie:</p>
 <ol style="list-style-type: decimal">
 <li>Silna reprezentatywność:</li>
 </ol>
@@ -254,8 +254,8 @@ f_s({\boldsymbol{x}}| w_i, I_{i} = 1) = f_{\Omega}({\boldsymbol{x}}),
 \]</span></p>
 <p>gdzie <span class="math inline">\(w_i\)</span> oznacza pewną wagę przypisaną danej jednostce <span class="math inline">\(i\)</span>, którą może być zarówno odwrotność prawdopodobieństwa dostania się do próby <span class="math inline">\(w_i = d_i = 1 / \pi_i\)</span> czy wagi post-stratyfikowane czy kalibrowane.</p>
 </div>
-<div id="representative-sampling-as-permitting-good-estimation" class="section level4">
-<h4><span class="header-section-number">7.1.2.3</span> Representative sampling as permitting good estimation</h4>
+<div id="reprezentatywny-model" class="section level4">
+<h4><span class="header-section-number">7.1.2.3</span> Reprezentatywny model</h4>
 <p>Na podstawie <span class="citation">Pfeffermann (<a href="#ref-pfeffermann2011modelling">2011</a>)</span> można wskazać pojęcie reprezentatywnego modelu, które może być zdefiniowane następująco:</p>
 <p>Model jest reprezentatywny, wtedy i tylko wtedy gdy rozkład warunkowy cechy <span class="math inline">\(y\)</span> pod warunkiem <span class="math inline">\({\boldsymbol{x}}\)</span> jest taki sam w próbie i populacji. To znaczy, <span class="math inline">\(f_{s}(y_i | {\boldsymbol{x}}_i) = f_{\Omega}(y_i | {\boldsymbol{x}}_i)\)</span> tylko gdy</p>
 <p><span class="math display" id="eq:pfeffermann-equality">\[
@@ -269,12 +269,32 @@ f(y_i | {\boldsymbol{x}}_i, I_i = 1, R_i=1) =
 \frac{Pr(R_i=1 \mid {\boldsymbol{x}}_i, y_{i}, I_i=1)f_{\Omega}(y_i | {\boldsymbol{x}}_i)}{Pr(R_i = 1 | {\boldsymbol{x}}_i, I_i = 1)},
 \tag{7.2}
 \]</span></p>
-<p>gdzie <span class="math inline">\(f\)</span> jest warunkową funkcją gęstości, <span class="math inline">\(f_{s}(y_i | {\boldsymbol{x}}_i)\)</span> jest rozkładem warunkowym w próbie, <span class="math inline">\(f_{\Omega}(y_i | {\boldsymbol{x}}_i)\)</span> jest rozkładem warunkowym w populacji, a pozostałe elementy zdefiniowane są jak poprzednio.</p>
+<p>gdzie <span class="math inline">\(f_{s}(y_i | {\boldsymbol{x}}_i)\)</span> jest rozkładem warunkowym w próbie, <span class="math inline">\(f_{\Omega}(y_i | {\boldsymbol{x}}_i)\)</span> jest rozkładem warunkowym w populacji, a pozostałe elementy zdefiniowane są jak poprzednio.</p>
 <p>Pytanie, co oznacza <a href="jakosc-badan-internetowych.html#eq:pfeffermann-equality">(7.1)</a>?</p>
+<div class="figure"><span id="fig:unnamed-chunk-8"></span>
+<img src="imgs/zhang-relation.png" alt="Zależność między cechą X a Y i wpływ na obciązenie i wariancję estymatorów" width="1000px" />
+<p class="caption">
+Figure 7.1: Zależność między cechą X a Y i wpływ na obciązenie i wariancję estymatorów
+</p>
+</div>
 </div>
 </div>
 <div id="problem-brakow-danych" class="section level3">
 <h3><span class="header-section-number">7.1.3</span> Problem braków danych</h3>
+<p>Przykłady braków danych (za <span class="citation">Little and Rubin (<a href="#ref-little2014statistical">2014</a>)</span>)</p>
+<div class="figure"><span id="fig:unnamed-chunk-9"></span>
+<img src="imgs/little-missing-data.png" alt="Przykłady mechanizmów braków danych" width="1000px" />
+<p class="caption">
+Figure 7.2: Przykłady mechanizmów braków danych
+</p>
+</div>
+<p><span class="citation">Rubin (<a href="#ref-rubin1976inference">1976</a>)</span> zdefiniował następujące mechanizmy braków danych:</p>
+<ol style="list-style-type: decimal">
+<li>Braki danych są całkowicie losowe (ang. Missing Completely at Random, MCAR) – If the probability of being missing is the same for all cases, then the data are said to be missing completely at random. This effctively implies that causes of the missing data are unrelated to the data.</li>
+<li>Braki są losowe (ang. missing at Random, MAR) – If the probability of being missing is the same only within groups defined by the observed data.</li>
+<li>Braki danych nie są losowe (ang. missing Not at Random, MNAR) – That is, the response propensity depends upon the unknown values of Y.</li>
+</ol>
+<p>Note that both MAR and MNAR are unverifiable assumptions based on the observed data</p>
 </div>
 </div>
 <div id="jak-badac-reprezentatywnosc" class="section level2">
@@ -305,8 +325,8 @@ B(\bar{y}) = E(\bar{y}) - \bar{Y} = \bar{Y}_{I} - \bar{Y} = \frac{N_{NI}}{N}(\ba
 
 <div class="definition">
 <p><span id="def:bias2" class="definition"><strong>Definition 7.2  (Obciążenie wynikające jedynie z błędu autoselekcji) </strong></span> <span class="math display">\[
-B(\bar{y}) = E(\bar{y}) - \bar{Y}_{I} \approx \frac{R(\rho,Y)s_\rho s_Y}{\bar{\rho}}
-\]</span>,</p>
+B(\bar{y}) = E(\bar{y}) - \bar{Y}_{I} \approx \frac{R(\rho,Y)s_\rho s_Y}{\bar{\rho}},
+\]</span></p>
 <p>gdzie:</p>
 <ul>
 <li><span class="math inline">\(R(\rho,Y)\)</span> to korelacja między skłonnością do odpowiedzi (<span class="math inline">\(\rho\)</span>), a cechą <span class="math inline">\(Y\)</span>,</li>
@@ -325,6 +345,13 @@ E(\bar{y}) \approx \frac{1}{N_i \bar{\rho}}\sum_{i=1}^N\rho_iI_iY_i.
 <li>korelacji między <span class="math inline">\(R(\rho,Y)\)</span> im wyższa, tym większe obciążenie,</li>
 <li>od wariancji <span class="math inline">\(\rho\)</span> i badanej cechy.</li>
 </ul>
+
+<div class="definition">
+<p><span id="def:bias3" class="definition"><strong>Definition 7.3  (Obciążenie wynikające z obydwu powyższych błędów) </strong></span> <span class="math display">\[
+B(\bar{y}) \approx \frac{N_{NI}}{N}(\bar{Y}_{I} - \bar{Y}_{NI}) + \frac{R(\rho,Y)s_\rho s_Y}{\bar{\rho}}
+\]</span></p>
+</div>
+<p></p>
 </div>
 <div id="porownanie-rozkadow-cechy-boldsymbolx-i-y" class="section level3">
 <h3><span class="header-section-number">7.2.2</span> Porównanie rozkładów cechy <span class="math inline">\({\boldsymbol{x}}\)</span> i <span class="math inline">\(y\)</span></h3>
@@ -365,6 +392,12 @@ E(\bar{y}) \approx \frac{1}{N_i \bar{\rho}}\sum_{i=1}^N\rho_iI_iY_i.
 </div>
 <div id="ref-pfeffermann2011modelling">
 <p>Pfeffermann, Danny. 2011. “Modelling of Complex Survey Data: Why Model? Why Is It a Problem? How Can We Approach It.” <em>Survey Methodology</em> 37 (2): 115–36.</p>
+</div>
+<div id="ref-little2014statistical">
+<p>Little, Roderick JA, and Donald B Rubin. 2014. <em>Statistical Analysis with Missing Data</em>. John Wiley &amp; Sons.</p>
+</div>
+<div id="ref-rubin1976inference">
+<p>Rubin, Donald B. 1976. “Inference and Missing Data.” <em>Biometrika</em> 63 (3). Biometrika Trust: 581–92.</p>
 </div>
 <div id="ref-bethlehem2010selection">
 <p>Bethlehem, Jelke. 2010. “Selection Bias in Web Surveys.” <em>International Statistical Review</em> 78 (2). Wiley Online Library: 161–88.</p>
