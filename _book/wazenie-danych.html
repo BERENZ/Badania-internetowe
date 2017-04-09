@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Badania Internetowe</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Materiały na zajęcia Badania Internetowe (Materials for Internet and web surveys class at Poznan University of Econimics and Business; in Polish).">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3.17 and GitBook 2.6.7">
 
   <meta property="og:title" content="Badania Internetowe" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-04-03">
+<meta name="date" content="2017-04-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="jakosc-badan-internetowych.html">
 <link rel="next" href="estymacja-w-badaniach-internetowych.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,11 +49,49 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -134,9 +170,13 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="wazenie-danych.html"><a href="wazenie-danych.html"><i class="fa fa-check"></i><b>8</b> Ważenie danych</a><ul>
-<li class="chapter" data-level="8.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.1</b> Propensity score weighting</a></li>
-<li class="chapter" data-level="8.2" data-path="wazenie-danych.html"><a href="wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.2</b> Kalibracja</a></li>
-<li class="chapter" data-level="8.3" data-path="wazenie-danych.html"><a href="wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.3</b> Dalsze kroki</a></li>
+<li class="chapter" data-level="8.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#wstep"><i class="fa fa-check"></i><b>8.1</b> Wstęp</a></li>
+<li class="chapter" data-level="8.2" data-path="wazenie-danych.html"><a href="wazenie-danych.html#post-stratyfikacja"><i class="fa fa-check"></i><b>8.2</b> Post-stratyfikacja</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#post-stratyfikacja-w-r"><i class="fa fa-check"></i><b>8.2.1</b> Post-stratyfikacja w R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="wazenie-danych.html"><a href="wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.3</b> Kalibracja</a></li>
+<li class="chapter" data-level="8.4" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a></li>
+<li class="chapter" data-level="8.5" data-path="wazenie-danych.html"><a href="wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.5</b> Dalsze kroki</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="estymacja-w-badaniach-internetowych.html"><a href="estymacja-w-badaniach-internetowych.html"><i class="fa fa-check"></i><b>9</b> Estymacja w badaniach internetowych</a><ul>
 <li class="chapter" data-level="9.1" data-path="estymacja-w-badaniach-internetowych.html"><a href="estymacja-w-badaniach-internetowych.html#podejscie-oparte-na-wazeniu"><i class="fa fa-check"></i><b>9.1</b> Podejście oparte na ważeniu</a></li>
@@ -179,14 +219,171 @@
             <section class="normal" id="section-">
 <div id="wazenie-danych" class="section level1">
 <h1><span class="header-section-number">Rozdział 8</span> Ważenie danych</h1>
-<div id="propensity-score-weighting" class="section level2">
-<h2><span class="header-section-number">8.1</span> Propensity score weighting</h2>
+<div id="wstep" class="section level2">
+<h2><span class="header-section-number">8.1</span> Wstęp</h2>
+<p>Niech <span class="math inline">\(U=\{1, 2, ..., N\}\)</span> oznacza populację generalną, a <span class="math inline">\(Y\)</span> oznacza cechę, którą badamy (np. liczba osób pracujących w pełnym wymiarze czasu). Niech <span class="math inline">\(y_i\)</span> oznacza wartości cechy obserwowane dla każdej jednostki populacji. Założmy, że celem jest oszacowanie wartości średniej w populacji</p>
+<p><span class="math display">\[
+\bar{Y} = \sum_{i=1}^{N}y_k.
+\]</span></p>
+<p>Jednak najczęściej nie obserwujemy całej populacji, a pewien jej fragment (próbę). Jeżeli</p>
+</div>
+<div id="post-stratyfikacja" class="section level2">
+<h2><span class="header-section-number">8.2</span> Post-stratyfikacja</h2>
+<p>Celem post-stratyfikacji jest:</p>
+<ul>
+<li>sprowadzenie rozkładów próby do znanych rozkładów populacji,</li>
+<li>zmniejszenie obciażenia estymatorów na podstawie próby przez skorygowanie rozkładów próby do znanych rozkładów z populacji.</li>
+</ul>
+<p>Aby dokonać post-stratyfikacji potrzebujemy informacji o wartościach globalnych (<span class="math inline">\({\boldsymbol{X}}\)</span>) zmiennych pomocniczych <span class="math inline">\({\boldsymbol{x}}\)</span>, którymi mogą być płeć, wiek, województwo itp.</p>
+<p>Założmy, że zmienna <span class="math inline">\({\boldsymbol{x}}\)</span> ma <span class="math inline">\(L\)</span> kategorii (warstw; np. wiek ma 5 kategorii, płeć ma dwie kategorie), które dzielą populację na podpopulacje <span class="math inline">\(U_1, U_2,..., U_L\)</span>, a ich wielkości możemy oznaczyć jako <span class="math inline">\(N_h\)</span>, gdzie <span class="math inline">\(h=1,2,...,L\)</span>, a <span class="math inline">\(N = N_1 + N_2 + ... + N_L\)</span>. Zakłdamy, że wielkości warstw są znane (pytanie: <strong>skąd mogą być znane?</strong>). Założmy, że obserwujemy próbę o liczebności <span class="math inline">\(n\)</span>, którą również możemy podzielić na podpróby <span class="math inline">\(n_1, n_2, ..., n_h\)</span>, które dają <span class="math inline">\(n=n_1 + n_2 + ... + n_h\)</span>.</p>
+<p>Aby próba była reprezentatywna ze względu na cechę <span class="math inline">\({\boldsymbol{x}}\)</span> proporcja elementów w warstwie <span class="math inline">\(h\)</span> musi być równa <span class="math inline">\(N_h/N\)</span> dla <span class="math inline">\(h=1,...,L\)</span>. W przypadku próby udział poszczególnych kategorii wyznaczamy jako <span class="math inline">\(n_h / n\)</span>. W związku z tym aby dokonać korekty musimy dla każdej jednostki <span class="math inline">\(i\)</span> w warstwie <span class="math inline">\(h\)</span> dokonać następującej korekty</p>
+<p><span class="math display">\[
+c_i = \frac{N_h/N}{n_h/n} = \frac{N_h}{N} \frac{n}{n_h}.
+\]</span></p>
+<p>Jeżeli wagi wynikające z losowania są równe <span class="math inline">\(d_i = n / N\)</span>, to estymator post-stratyfikowany dla średniej ma następującą postać:</p>
+<p><span class="math display" id="eq:y-ps">\[
+\bar{y}_{ps} = \frac{1}{N}\sum_{h=1}^{L} N_h\bar{y}^{(h)},
+\tag{8.1}
+\]</span></p>
+<p>gdzie <span class="math inline">\(\bar{y}^{(h)}\)</span> jest średnią obliczoną na podstawie elementów obserwowanych w warstwie <span class="math inline">\(h\)</span>. W tym przypadku post-stratyfikowany estymator średniej jest równy ważonej sumie średnich w poszczególnych warstwach.</p>
+<p>Teraz założmy, że nie wszystkie jednostki z próby udzieliły odpowiedzi (występuje problem non-response). W takim przypadku estymator @ref{eq:y-ps} na następującą postać:</p>
+<p><span class="math display" id="eq:y-ps-r">\[
+\bar{y}_{R,ps} = \frac{1}{N}\sum_{h=1}^{L} N_h\bar{y}^{(h)_R},
+\tag{8.2}
+\]</span></p>
+<p>gdzie <span class="math inline">\(\bar{y}^{(h)_R}\)</span> to średnia dla jednostek w warstwie <span class="math inline">\(h\)</span>, które odpowiedziały. Obciążenie estymatora @ref{eq:y-ps-r} dane jest wzorem:</p>
+<p><span class="math display">\[
+B(\bar{y}_{R,ps}) = \frac{1}{N} \sum_{h=1}^{L} N_h \frac{R_{\rho{y}}^{(h)} S_{\rho}^{(h)} S_{y}^{(h)} }{ \bar{\rho}^{(h)}},
+\]</span></p>
+<p>gdzie <span class="math inline">\(R_{\rho{y}}^{(h)}\)</span> jest współczynnikiem korelacji miedzy <span class="math inline">\(y\)</span>, a <span class="math inline">\(\rho\)</span> w warstwie <span class="math inline">\(h\)</span>, <span class="math inline">\(S_{\rho}^{(h)},S_{y}^{(h)}\)</span> jest odchyleniem standardowym <span class="math inline">\(\rho\)</span> oraz <span class="math inline">\(y\)</span> w warstwie <span class="math inline">\(h\)</span>, a <span class="math inline">\(\bar{\rho}^{(h)}\)</span> jest średnią <span class="math inline">\(\rho\)</span> w warstwie <span class="math inline">\(h\)</span>.</p>
+<p>Obciązenie będzie małe w przypadku gdy:</p>
+<ul>
+<li>Nie ma zależności między badaną cechą, a skłonnością do odpowiedzi w danej warstwie – korelacja <span class="math inline">\(R_{\rho{y}}^{(h)}\)</span> jest niska,</li>
+<li>Skłonności do odpowiedzi w warstwie są mniej więcej bliskie – <span class="math inline">\(S_{\rho}^{(h)}\)</span> jest małe</li>
+<li>Cecha <span class="math inline">\(y\)</span> jest słabo zróżnicowana w warstwach – <span class="math inline">\(S_{y}^{(h)}\)</span> jest niskie.</li>
+</ul>
+<p>Następnie musimy rozważyć przypadek gdy występuje błąd pokrycia (undercoverage). Wtedy obciązenie post-stratyfikowanego estymatora jest równe</p>
+<p><span class="math display">\[
+B(\bar{y}_{I,ps}) = \sum_{h=1}^{L} W_h \frac{N_{NI,h}}{N_h} (\bar{y}_{I}^{(h)} - \bar{y}_{NI}^{(h)}),
+\]</span></p>
+<p>gdzie <span class="math inline">\(W_h = N_h / N\)</span>, <span class="math inline">\(N_{NI,h}\)</span> to liczba osób bez internetu w warstwie <span class="math inline">\(h\)</span>, <span class="math inline">\(\bar{y}_{I}^{(h)}\)</span> to średnia dla osób, które mają dostęp do internetu, a <span class="math inline">\(\bar{y}_{NI}^{(h)}\)</span> to średnia dla osób, które nie mają dostępu do Internetu.</p>
+<p>Obciażenie estymatora @ref{eq:y-ps} w przypadku gdy wystąpiła autoselekcja jednostek do próby jest następujące:</p>
+<p><span class="math display">\[
+B(\bar{y}_{S,ps}) = \frac{1}{N} \sum_{h=1}^{L} N_h \frac{R_{\rho{y}}^{(h)} S_{\rho}^{(h)} S_{y}^{(h)} }{ \bar{\rho}^{(h)}}.
+\]</span></p>
+<div id="post-stratyfikacja-w-r" class="section level3">
+<h3><span class="header-section-number">8.2.1</span> Post-stratyfikacja w R</h3>
+<p>Załóżmy, że naszym celem jest oszacowanie liczby osób pracujących w 2015 roku (zmienna <code>czy_praca</code>) będących w wieku produkcyjnym. Aby oszacować te wartości wykorzystamy dwie warstwy płeć (<code>plec</code>) oraz województwo (<code>woj</code>). W pierwszej kolejności oszacujemy liczbę pracujących na podstawie próby bez korekty.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proba_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(wiek &lt;=<span class="st"> </span><span class="dv">59</span>) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>)) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca))
+proba_pracujacy</code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##       praca
+##       &lt;dbl&gt;
+## 1 0.6769874</code></pre>
+<p>Liczba pracujących wyniosła 67.7% w przypadku gdy oszacowanie przedstawimy na podstawie próby bez żadnej korekty. Następnie dokonamy korekty z wykorzystaniem informacji o wielkości populacji w poszczególnych warstwach. W pierwszej kolejności oszacujemy średnie według płci oraz województw.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## 1 – mężczyzna, 2 – kobieta
+diagnoza_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(wiek &lt;=<span class="st"> </span><span class="dv">59</span>) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>)) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(plec, woj) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca))
+
+diagnoza_pracujacy</code></pre></div>
+<pre><code>## Source: local data frame [32 x 3]
+## Groups: plec [?]
+## 
+##     plec   woj     praca
+##    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1      1     2 0.7207637
+## 2      1     4 0.7013699
+## 3      1     6 0.7400000
+## 4      1     8 0.7602041
+## 5      1    10 0.7494781
+## 6      1    12 0.7388781
+## 7      1    14 0.7667436
+## 8      1    16 0.7175926
+## 9      1    18 0.6791980
+## 10     1    20 0.7509434
+## # ... with 22 more rows</code></pre>
+<p>W kolejnym kroku potrzebujemy informacji o liczbe osób w wieku produkcyjnym w tych przekrojach. Wykorzystamy w tym celu dane z rejestru PESEL skorygowanego przez informacje ze spisu powszechnego NSP 2011 (dane pobrane z BDL).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">populacja_N &lt;-<span class="st"> </span>populacja %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(Płeć !=<span class="st"> &#39;ogółem&#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">plec =</span> <span class="kw">ifelse</span>(Płeć ==<span class="st"> &#39;mężczyźni&#39;</span>,<span class="dv">1</span>,<span class="dv">2</span>),
+         <span class="dt">woj =</span> <span class="kw">gsub</span>(<span class="st">&#39;^</span><span class="ch">\\</span><span class="st">d&#39;</span>,<span class="st">&#39;&#39;</span>,Kod),
+         <span class="dt">woj =</span> <span class="kw">substr</span>(woj,<span class="dv">1</span>,<span class="dv">2</span>),
+         <span class="dt">woj =</span> <span class="kw">as.numeric</span>(woj)) %&gt;%
+<span class="st">  </span><span class="kw">count</span>(woj, plec, <span class="dt">wt =</span> Wartosc)
+
+populacja_N</code></pre></div>
+<pre><code>## Source: local data frame [32 x 3]
+## Groups: woj [?]
+## 
+##      woj  plec      n
+##    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1      2     1 900219
+## 2      2     2 895065
+## 3      4     1 655776
+## 4      4     2 649055
+## 5      6     1 674529
+## 6      6     2 652745
+## 7      8     1 322278
+## 8      8     2 314978
+## 9     10     1 757248
+## 10    10     2 755387
+## # ... with 22 more rows</code></pre>
+<p>Następnie dołączymy te informacje do próby i dokonamy szacunku</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proba_pracujacy_korekta &lt;-<span class="st"> </span>diagnoza_pracujacy %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(populacja_N) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
+<pre><code>## Joining, by = c(&quot;plec&quot;, &quot;woj&quot;)</code></pre>
+<p>Liczba pracujących po korekcie wyniosła 68.31%, a przed 67.7% podczas gdy wartość w populacji wynosiła 68.7% (+/ 0.4 pp). Spójrzmy co będzie jeżeli użyjemy płci i wieku.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## w latach według grup wieku
+populacja_N &lt;-<span class="st"> </span>populacja %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(Płeć !=<span class="st"> &#39;ogółem&#39;</span>) %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">plec =</span> <span class="kw">ifelse</span>(Płeć ==<span class="st"> &#39;mężczyźni&#39;</span>,<span class="dv">1</span>,<span class="dv">2</span>)) %&gt;%
+<span class="st">  </span><span class="kw">count</span>(Wiek, plec, <span class="dt">wt =</span> Wartosc) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Wiek =</span> <span class="kw">factor</span>(Wiek),
+         <span class="dt">wiek =</span> <span class="kw">as.numeric</span>(Wiek)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(wiek,plec,n)
+
+## wiek
+diagnoza_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
+<span class="st">  </span><span class="kw">filter</span>(wiek &lt;=<span class="st"> </span><span class="dv">59</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>),
+         <span class="dt">wiek_cat =</span> <span class="kw">cut</span>(<span class="dt">x =</span> wiek, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">50</span>,<span class="dv">55</span>,<span class="dv">60</span>),<span class="dt">include.lowest =</span> T, <span class="dt">right =</span> F)) %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(wiek_cat, plec) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca)) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wiek =</span> <span class="kw">as.numeric</span>(wiek_cat)) %&gt;%
+<span class="st">  </span><span class="kw">select</span>(wiek, plec, praca)
+
+## łączymy i szacujemy
+prac_wiek &lt;-<span class="st"> </span>diagnoza_pracujacy %&gt;%
+<span class="st">  </span><span class="kw">left_join</span>(populacja_N) %&gt;%
+<span class="st">  </span><span class="kw">ungroup</span>() %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
+<pre><code>## Joining, by = c(&quot;wiek&quot;, &quot;plec&quot;)</code></pre>
+<p>Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):</p>
+<ul>
+<li>bez post-stratyfikacji – 67.7 %</li>
+<li>post-stratyfikacja (płeć x województwo) – 68.31%</li>
+<li>post-stratyfikacja (płeć x grupy wieku) – 67.81 %</li>
+</ul>
+</div>
 </div>
 <div id="kalibracja" class="section level2">
-<h2><span class="header-section-number">8.2</span> Kalibracja</h2>
+<h2><span class="header-section-number">8.3</span> Kalibracja</h2>
+</div>
+<div id="propensity-score-weighting" class="section level2">
+<h2><span class="header-section-number">8.4</span> Propensity score weighting</h2>
 </div>
 <div id="dalsze-kroki-2" class="section level2">
-<h2><span class="header-section-number">8.3</span> Dalsze kroki</h2>
+<h2><span class="header-section-number">8.5</span> Dalsze kroki</h2>
 
 </div>
 </div>
@@ -196,8 +393,9 @@
         </div>
       </div>
 <a href="jakosc-badan-internetowych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="estymacja-w-badaniach-internetowych.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="estymacja-w-badaniach-internetowych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

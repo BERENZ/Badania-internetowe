@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Badania Internetowe</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Materiały na zajęcia Badania Internetowe (Materials for Internet and web surveys class at Poznan University of Econimics and Business; in Polish).">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3.17 and GitBook 2.6.7">
 
   <meta property="og:title" content="Badania Internetowe" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-04-03">
+<meta name="date" content="2017-04-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="technologie-w-badaniach-internetowych.html">
 <link rel="next" href="dobor-proby-w-badaniach-internetowych.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,11 +49,49 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -134,9 +170,13 @@
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="wazenie-danych.html"><a href="wazenie-danych.html"><i class="fa fa-check"></i><b>8</b> Ważenie danych</a><ul>
-<li class="chapter" data-level="8.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.1</b> Propensity score weighting</a></li>
-<li class="chapter" data-level="8.2" data-path="wazenie-danych.html"><a href="wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.2</b> Kalibracja</a></li>
-<li class="chapter" data-level="8.3" data-path="wazenie-danych.html"><a href="wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.3</b> Dalsze kroki</a></li>
+<li class="chapter" data-level="8.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#wstep"><i class="fa fa-check"></i><b>8.1</b> Wstęp</a></li>
+<li class="chapter" data-level="8.2" data-path="wazenie-danych.html"><a href="wazenie-danych.html#post-stratyfikacja"><i class="fa fa-check"></i><b>8.2</b> Post-stratyfikacja</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#post-stratyfikacja-w-r"><i class="fa fa-check"></i><b>8.2.1</b> Post-stratyfikacja w R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="wazenie-danych.html"><a href="wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.3</b> Kalibracja</a></li>
+<li class="chapter" data-level="8.4" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a></li>
+<li class="chapter" data-level="8.5" data-path="wazenie-danych.html"><a href="wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.5</b> Dalsze kroki</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="estymacja-w-badaniach-internetowych.html"><a href="estymacja-w-badaniach-internetowych.html"><i class="fa fa-check"></i><b>9</b> Estymacja w badaniach internetowych</a><ul>
 <li class="chapter" data-level="9.1" data-path="estymacja-w-badaniach-internetowych.html"><a href="estymacja-w-badaniach-internetowych.html#podejscie-oparte-na-wazeniu"><i class="fa fa-check"></i><b>9.1</b> Podejście oparte na ważeniu</a></li>
@@ -214,8 +254,9 @@
         </div>
       </div>
 <a href="technologie-w-badaniach-internetowych.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dobor-proby-w-badaniach-internetowych.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="dobor-proby-w-badaniach-internetowych.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>

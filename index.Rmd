@@ -21,11 +21,19 @@ library(tidyjson)
 library(stringi)
 library(lubridate)
 library(jsonlite)
-knitr::opts_chunk$set(cache = TRUE, echo = FALSE)
+library(readxl)
+knitr::opts_chunk$set(cache = FALSE, echo = TRUE)
 theme_set(theme_bw())
 ```
 
+```{r wczytanie danych}
+load('~/Documents/Uczelnia/Dydaktyka/Badania Internetowe/data/diagnoza2015.rdata')
+populacja <- read_excel(path = '~/Documents/Uczelnia/Dydaktyka/Badania Internetowe/data-raw/populacja_2015.xlsx',
+                        sheet = 2)
+```
+
 \newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bX}{\boldsymbol{X}}
 \newcommand{\bv}{\boldsymbol{v}}
 
 # Badania internetowe -- podstawowe wymagania
