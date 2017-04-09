@@ -37,14 +37,14 @@ $$
 gdzie $\bar{y}^{(h)}$ jest średnią obliczoną na podstawie elementów obserwowanych w warstwie $h$. W tym przypadku post-stratyfikowany estymator średniej jest równy ważonej sumie średnich w poszczególnych warstwach.
 
 
-Teraz założmy, że nie wszystkie jednostki z próby udzieliły odpowiedzi (występuje problem non-response). W takim przypadku estymator  \@ref{eq:y-ps} na następującą postać:
+Teraz założmy, że nie wszystkie jednostki z próby udzieliły odpowiedzi (występuje problem non-response). W takim przypadku estymator  \@ref(eq:y-ps) na następującą postać:
 
 $$
 \bar{y}_{R,ps} = \frac{1}{N}\sum_{h=1}^{L} N_h\bar{y}^{(h)_R},
 (\#eq:y-ps-r)
 $$
 
-gdzie $\bar{y}^{(h)_R}$ to średnia dla jednostek w warstwie $h$, które odpowiedziały. Obciążenie estymatora \@ref{eq:y-ps-r} dane jest wzorem:
+gdzie $\bar{y}^{(h)_R}$ to średnia dla jednostek w warstwie $h$, które odpowiedziały. Obciążenie estymatora \@ref(eq:y-ps-r) dane jest wzorem:
 
 $$
 B(\bar{y}_{R,ps}) = \frac{1}{N} \sum_{h=1}^{L} N_h \frac{R_{\rho{y}}^{(h)} S_{\rho}^{(h)} S_{y}^{(h)} }{ \bar{\rho}^{(h)}},
@@ -68,7 +68,7 @@ $$
 
 gdzie $W_h = N_h / N$, $N_{NI,h}$ to liczba osób bez internetu w warstwie $h$, $\bar{y}_{I}^{(h)}$ to średnia dla osób, które mają dostęp do internetu, a $\bar{y}_{NI}^{(h)}$ to średnia dla osób, które nie mają dostępu do Internetu.
 
-Obciażenie estymatora \@ref{eq:y-ps} w przypadku gdy wystąpiła autoselekcja jednostek do próby jest następujące: 
+Obciażenie estymatora \@ref(eq:y-ps) w przypadku gdy wystąpiła autoselekcja jednostek do próby jest następujące: 
 
 $$
 B(\bar{y}_{S,ps}) = \frac{1}{N} \sum_{h=1}^{L} N_h \frac{R_{\rho{y}}^{(h)} S_{\rho}^{(h)} S_{y}^{(h)} }{ \bar{\rho}^{(h)}}.
@@ -156,14 +156,186 @@ prac_wiek <- diagnoza_pracujacy %>%
 
 Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):
 
-+ bez post-stratyfikacji -- `r round(proba_pracujacy[[1]]*100,2)` %
-+ post-stratyfikacja (płeć x województwo) -- `r round(proba_pracujacy_korekta[[1]]*100,2)`%
-+ post-stratyfikacja (płeć x grupy wieku) -- `r round(prac_wiek[[1]]*100,2)` %
++ bez post-stratyfikacji -- `r round(proba_pracujacy[[1]]*100,2)` % (obciązenie= `r round(proba_pracujacy[[1]]*100,2) - 68.7`) 
++ post-stratyfikacja (płeć x województwo) -- `r round(proba_pracujacy_korekta[[1]]*100,2)`% (obciązenie= `r round(proba_pracujacy_korekta[[1]]*100,2) - 68.7`) 
++ post-stratyfikacja (płeć x grupy wieku) -- `r round(prac_wiek[[1]]*100,2)` % (obciązenie= `r round(prac_wiek[[1]]*100,2) - 68.7`) 
 
 ## Kalibracja
 
 ## Propensity score weighting
 
-## Dalsze kroki
+### Regresja logistyczna
 
+Funkcją logistyczną nazywamy funkcję postaci:
+
+$$
+f\left(x\right)=\frac{1}{1+e^{-x}}=\frac{e^{x}}{1+e^{x}}
+$$
+
+
+Funkcja logistyczna -- własności: 
+
++ $D=R$.
++ Funkcja logistyczna przyjmuje wartości z~przedziału $\left(0,1\right)$.
++ Funkcja logistyczna kształtem przypomina rozciągniętą literę S.
++ Funkcja logistyczna nadaje się do opisu takich zjawisk, które początkowo rosną coraz szybciej, następnie osiągają punkt przegięcia i~rosną coraz wolniej, zbliżając się asymptotycznie do poziomu nasycenia.
++ Popularność funkcji logistycznej wynika z~faktu, że przyjmuje ona wartości z~przedziału $\left(0,1\right)$. Może być ona zatem wykorzystana do modelowania prawdopodobieństwa.
++ Prawdopodobieństwo to może, na przykład, oznaczać ryzyko zachorowania lub szansę na wyzdrowienie, ryzyko niespłacenia kredytu bądź szansę jego spłaty, szansę zakupienia pewnego produktu bądź ryzyko zakupienia innego towaru etc.	    
+
+Pojęcie szansy
+
++ Szansą nazywamy stosunek prawdopodobieństwa, że pewne zdarzenie wystąpi do prawdopodobieństwa, że to zdarzenie nie pojawi się.
++ Niech $A$ oznacza dowolne zdarzenie. Z~formalnego punktu widzenia szansę definiujemy w~następujący sposób:
+
+$$
+S\left(A\right)=\frac{P\left(A\right)}{1-P\left(A\right)}.
+$$
+
+Załóżmy, że prawdopodobieństwo zdarzenia, że klient supermarketu zakupi pewien produkt wynosi 0.1. Wówczas szansa zakupu tego produktu przez klienta supermarketu wynosi:
+
+$$
+S\left(A\right)=\frac{P\left(A\right)}{1-P\left(A\right)}=\frac{0.1}{1-0.1}=\frac{0.1}{0.9}=\frac{1}{9}.
+$$
+
+Oznacza to, że prawdopodobieństwo zakupu produktu jest równe jednej dziewiątej prawdopodobieństwa, że klient nie zakupi tego produktu. Innymi słowy możemy powiedzieć, że szansa zakupu danego produktu jest jak 1 do 9, tzn. na 10 klientów jeden z~nich zakupi dany towar.
+
+Pojęcie ilorazu szans
+
++ Ilorazem szans dwóch zdarzeń $A$ i $B$ nazywamy stosunek szansy wystąpienia zdarzenia $A$ do szansy wystąpienia zdarzenia $B$.
++ Niech $A$ i $B$ oznaczają dowolne zdarzenia. Z~formalnego punktu widzenia iloraz szans definiujemy w~następujący sposób:
+$$
+OR_{AB}=\frac{S\left(A\right)}{S\left(B\right)}=\frac{P\left(A\right)}{1-P\left(A\right)}:\frac{P\left(B\right)}{1-P\left(B\right)}.
+$$
++ Oznaczenie ilorazu szansy $OR_{AB}$ pochodzi od początkowych liter nazwy angielskiej (\textit{odds ratio}).
+			
+			
+Pojęcie ilorazu szans -- przykład
+
+Załóżmy, że poniższa tabela przedstawia informację na temat wyników badania dotyczącego kupna pewnego produktu. Niech $A$ oznacza zdarzenie polegające na kupnie tego produktu przez kobietę, a~$B$ zdarzenie polegające na kupnie tego produktu przez mężczyznę.
+
+\begin{table}[htp]
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Płeć} & \multicolumn{2}{c|}{\textbf{Informacja o kupnie produktu}} \\ 
+\cline{2-3}
+\textbf{klienta} & \textbf{Produkt został kupiony} & \textbf{Produkt nie został kupiony} \\ 
+\hline
+\textbf{Kobieta} & \multicolumn{1}{c|}{243} & \multicolumn{1}{c|}{30} \\ 
+\hline
+\textbf{Mężczyzna} & \multicolumn{1}{c|}{48} & \multicolumn{1}{c|}{240} \\ 
+\hline
+\end{tabular}
+\end{table}
+
+Odpowiednie szansy zakupu tego produktu w~zależności od płci klienta wynoszą:
+
+$$
+\mathbf{S\left(A\right)}=\frac{243/273}{1-243/273}=\frac{243}{273}\cdot\frac{273}{30}=\frac{243}{30}=8.1\quad
+\mathbf{S\left(B\right)}=\frac{48/288}{1-48/288}=\frac{48}{288}\cdot\frac{288}{240}=\frac{48}{240}=0.2
+$$
+
+Ilorazy szans zakupu tego produktu wynoszą odpowiednio:
+
+$$
+\mathbf{OR_{AB}}=8.1/0.2=40.5 \quad \mathbf{OR_{BA}}=0.2/8.1=0.0247
+$$
+
+Iloraz szans równy $40.5$ oznacza, że szansa zakupienia produktu przez kobietę jest czterdzieści razy większa niż szansa zakupu tego produktu przez mężczyznę.
+
++ W~przypadku gdyby $\mathbf{OR_{AB}}=1$ oznaczałoby to, że szansa zakupu danego produktu przez kobietę jest taka sama jak szansa zakupu produktu przez mężczyznę. Innymi słowy fakt zakupu produktu nie zależałby od płci kupującego klienta.
++ W~przypadku gdy $\mathbf{OR_{AB}}>1$ oznacza to, że szansa wystąpienia danego zdarzenia w~grupie $A$ jest większa niż w~grupie $B$. 
++ W~przypadku gdy $\mathbf{OR_{AB}}<1$ oznacza to, że szansa wystąpienia danego zdarzenia w~grupie $A$ jest mniejsza niż w~grupie $B$. W~naszym przykładzie $\mathbf{OR_{BA}}=0.2/8.1=0.0247 \cong 1/40$ co oznacza, że szansa zakupienia produktu przez mężczyznę jest czterdzieści razy mniejsza niż szansa zakupu tego produktu przez kobietę.
++ Większość pakietów statystycznych (w~tym i~SPSS) wyznacza $95\%$ przedział ufności dla ilorazu szans.
+
+Model regresji logistycznej
+
++ Model regresji logistycznej z~formalnego punktu widzenia jest uogólnionym modelem liniowym (GLM), w~którym użyto tzw. transformacji logitowej.
++ Model regresji logistycznej wykorzystywany jest w~sytuacji gdy zmienna objaśniana $Y$ jest zmienną dychotomiczną tj. przyjmuje tylko dwie wartości.
++ Niech $Y$ oznacza zmienną dychotomiczną o~wartościach $1$ (z~reguły odnoszących się do zdarzeń pożądanych tj. wyzdrowienie, zakup produktu, spłata kredytu itd.) oraz $0$ (w~przeciwnym wypadku, na przykład choroba, nie kupienie produktu, brak spłaty kredytu itd.). Przy tak przyjętych oznaczeniach modelem regresji logistycznej jest:
+
+$$
+P=P\left(Y=1|X_{1},X_{2},\ldots,X_{k}\right)=\frac{e^{a_{0}+a_{1}X_{1}+\ldots+a_{k}X_{k}}}{1+e^{a_{0}+a_{1}X_{1}+\ldots+a_{k}X_{k}}}
+$$
+		$a_{i}, i=0,\ldots,k$	oznaczają współczynniki modelu regresji logistycznej, a~$x_{1},\ldots,x_{k}$ są zmiennymi objaśniającymi (niezależnymi), które mogą być zarówno ilościowe jak i jakościowe.
+		
++ Z~formalnego punktu widzenia model regresji logistycznej wyraża warunkowe prawdopodobieństwo, że zmienna $Y$ przyjmie wartość równą $1$ dla określonych wartości zmiennych objaśniających $x_{1},\ldots,x_{k}$.
+
++ Parametry $a_{i}, i=0,\ldots,k$ modelu regresji logistycznej szacuje się metodą największej wiarogodności (MNW), której podstawy teoretyczne sformułował Fisher. 
+		
+			
+Transformacja logitowa
+
++ Transformacją logitową (logitem) nazywamy przekształcenie prawdopodobieństwa w~logarytm naturalny ilorazu szans
+
+$$
+logit P=ln\frac{P}{1-P}
+$$
++ W~przypadku modelu regresji logistycznej otrzymujemy:
+
+$$
+logit P=ln\frac{P}{1-P}=ln\left(P\right)-ln\left(1-P\right)=a_{0}+a_{1}x_{1}+\ldots+a_{k}x_{k}
+$$ 
+
++ Powyższa równość nazywana jest logitową postacią modelu regresji logistycznej i~wyraża liniową funkcję regresji wielu zmiennych.
+
+Interpretacja parametrów modelu regresji logistycznej
+
++ Parametry modelu regresji logistycznej mają bardzo prostą interpretację nawiązującą do ilorazu szans (OR).
++ Niech $A$ i~$B$ oznaczają dwie porównywane ze sobą grupy. Niech ponadto $X_{A_{i}}$ oznacza wartość $i$-tej zmiennej objaśniającej dla jednostki z~grupy $A$. Podobnie niech $X_{B_{i}}$ oznacza wartość $i$-tej zmiennej objaśniającej dla jednostki z~grupy $B$. 
++ Parametry modelu regresji logistycznej interpretujemy jako ilorazy szans:
+
+$$
+OR_{AB}=e^{\displaystyle\sum_{i=1}^{k}a_{i}\left(X_{A_{i}}-X_{B_{i}}\right)}
+$$
+
+Wybrane miary oceny jakości modelu regresji logistycznej
+
++ Praktyczne wykorzystanie regresji logistycznej, podobnie jak w przypadku regresji wielorakiej, powinno być poprzedzone analizą jakości uzyskanego modelu. Należy m.in. sprawdzić istotność uzyskanych parametrów czy dopasowanie modelu do danych empirycznych.
++ W pakietach statystycznych jedną z najczęściej wykorzystywanych miar oceny dopasowania modelu jest statystyka ilorazu największej wiarygodności postaci:
+$$
+LR=-2log\left(ML_{1}\right)-\left(-2log\left(ML_{2}\right)\right)=-2log\left(ML_{1}/ML_{2}\right). 
+$$
++ Statystykę tę wykorzystuje się również do porównania dwóch modeli $M_{1}$ i $M_{2}$, przy czym zakłada się, że model $M_{1}$ jest podzbiorem modelu $M_{2}$ ($ML_{1}$ i $ML_{2}$ oznaczają odpowiednio wartość funkcji wiarygodności dla modelu $M_{1}$ i $M_{2}$ odpowiednio). 
++ Statystyka ta ma asymptotyczny rozkład chi-kwadrat z liczbą stopni swobody będącą różnicą między liczbą parametrów obydwu modeli.
+
++ Bardzo często pierwszym krokiem weryfikacji modelu jest przyjęcie założenia, że $M_{1}$ jest modelem, w którym jedynym parametrem jest wyraz wolny, a $M_{2}$ jest pełnym modelem zawierającym wszystkie zmienne objaśniające. 
++ W hipotezie zerowej zakłada się przy tym, że wszystkie zmienne nie są istotne w sensie statystycznym wobec hipotezy alternatywnej, że istnieją pewne zmienne, które są istotne. 
++ W przypadku odrzucenia hipotezy zerowej stwierdzamy, że model z pełnym zestawem zmiennych objaśniających poprawia dopasowanie do danych empirycznych i istotnie różni się od modelu z wyrazem wolnym.
++ W przypadku gdy jesteśmy zainteresowani sprawdzeniem czy dołączenie tylko jednej zmiennej poprawia model można wykorzystać statystykę Walda postaci:
+$$
+Wald_{i}=\left(\frac{b_{i}}{S_{b_{i}}}\right)^{2}
+$$
++ Statystyka ta ma rozkład chi-kwadrat z jednym stopniem swobody ($S\left(b_{i}\right)$  oznacza średni błąd szacunku jaki popełniamy przy szacowaniu parametru przy i-tej zmiennej objaśniającej). 
++ W przypadku odrzucenia hipotezy zerowej stwierdzamy, że włączenie  i-tej zmiennej objaśniającej poprawia w sposób statystycznie istotny dopasowanie modelu do danych empirycznych. Innymi słowy warto zostawić taką zmienną w budowanym modelu regresji logistycznej. 
+
++ W klasycznym modelowaniu jedną z najczęściej wykorzystywanych miar dopasowania modelu do danych empirycznych jest współczynnik determinacji $R^{2}$.
++ Pewnym odpowiednikiem współczynnika determinacji w modelu regresji logistycznej jest zaproponowany przez McFaddena współczynnik, określany w literaturze mianem pseudo $R^{2}$.
+$$
+R^{2}_{McFadden}=1-\frac{Ln\left(L_{p}\right)}{Ln\left(L_{0}\right)}
+$$ 
+			$Ln\left(L_{p}\right)$ jest logarytmem naturalnym wartości funkcji wiarygodności dla pełnego modelu a $Ln\left(L_{0}\right)$ jest logarytmem naturalnym wartości funkcji wiarygodności dla modelu z wyrazem wolnym.  
++ Nie jest to jednak współczynnik unormowany w przedziale $[0,1]$ a jego maksymalna wartość jest mniejsza od 1. 
++ Generalnie, im większa jest wartość pseudo $R^{2}$ tym większa jest zdolność trafnego przewidywania badanej zmiennej z wykorzystaniem modelu regresji logistycznej.
++ Przyjmuje się przy tym, że wartości z przedziału 0,2-0,4 są w zupełności zadowalające.
++ W literaturze występuje również szereg innych miar wykorzystywanych do badania jakości dopasowania modelu regresji logistycznej.
++ Współczynnik Coxa-Snella
+$$
+R^{2}_{CS}=1-exp\left(\frac{-2Ln\left(L_{0}\right)+2Ln\left(L_{p}\right)}{n}\right)
+$$
++ współczynnik Nagelkerkego
+$$
+R^{2}_{N}=1-\frac{1-e^{-\frac{2}{n}\left(Ln\left(L_{p}\right)-Ln\left(L_{0}\right)\right)}}{1-e^{-\frac{2}{n}Ln\left(L_{0}\right)}}
+$$
++ współczynnik Cragga-Uhlera
+
+$$
+R^{2}_{CU}=\frac{1-\left(\frac{L_{0}}{L_{p}}\right)^{\frac{2}{n}}}{1-\left(L_{0}\right)^{\frac{2}{n}}}
+$$
++ Podobnie jak w przypadku współczynnika McFaddena wyższe wartości współczynników Coxa-Snella, Negelkerke'a i Cragga-Uhlera są bardziej pożądane, gdyż świadczą o lepszym dopasowaniu oszacowanego modelu regresji logistycznej do danych empirycznych. 
++ Szczególnie użyteczny może być współczynnik Negelkerke'a, który jest unormowany i przyjmuje wartości z przedziału $[0,1]$. 
++ Przy interpretacji współczynników dopasowania w odniesieniu do modelu regresji logistycznej należy jednak zachować szczególną ostrożność. 
++ Jak pokazują praktyczne doświadczenia, uzyskanie miar dopasowania w przypadku modelu regresji logistycznej, na poziomie 0,2-0,4 można w wielu przypadkach uznać za zadowalające. 
+
+
+## Dalsze kroki
 

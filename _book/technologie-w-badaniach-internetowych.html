@@ -175,7 +175,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="8.2.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#post-stratyfikacja-w-r"><i class="fa fa-check"></i><b>8.2.1</b> Post-stratyfikacja w R</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="wazenie-danych.html"><a href="wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.3</b> Kalibracja</a></li>
-<li class="chapter" data-level="8.4" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a></li>
+<li class="chapter" data-level="8.4" data-path="wazenie-danych.html"><a href="wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a><ul>
+<li class="chapter" data-level="8.4.1" data-path="wazenie-danych.html"><a href="wazenie-danych.html#regresja-logistyczna"><i class="fa fa-check"></i><b>8.4.1</b> Regresja logistyczna</a></li>
+</ul></li>
 <li class="chapter" data-level="8.5" data-path="wazenie-danych.html"><a href="wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.5</b> Dalsze kroki</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="estymacja-w-badaniach-internetowych.html"><a href="estymacja-w-badaniach-internetowych.html"><i class="fa fa-check"></i><b>9</b> Estymacja w badaniach internetowych</a><ul>
@@ -232,8 +234,8 @@ zalando_df &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(zaland
 <span class="kw">str</span>(zalando_df,<span class="dv">1</span>)</code></pre></div>
 <pre><code>## List of 5
 ##  $ content      :&#39;data.frame&#39;:   20 obs. of  18 variables:
-##  $ totalElements: int 233773
-##  $ totalPages   : int 11689
+##  $ totalElements: int 233671
+##  $ totalPages   : int 11684
 ##  $ page         : int 1
 ##  $ size         : int 20</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(zalando_df$content,<span class="dv">1</span>)</code></pre></div>
