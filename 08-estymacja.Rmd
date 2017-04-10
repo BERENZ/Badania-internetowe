@@ -1,4 +1,4 @@
-# Estymacja w badaniach internetowych
+# Estymacja w badaniach internetowych -- podejście modelowe
 
 ## Podejście oparte na ważeniu
 

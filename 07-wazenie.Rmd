@@ -1,6 +1,13 @@
-# Ważenie danych
+# Estymacja w badaniach internetowych -- ważenie danych
 
 ## Wstęp
+
+W przypadku badań interentowych możemy wyszczególnić następujące podejścia:
+
++ oparte na podejściu (pseudo)-randomizacyjnym -- przeważanie danych, w tym modelujemy skłonność do odpowiedzi (ang. propensity to respond),
++ oparte na podejściu modelowym -- budujemy model, którym chcemy wyjaśnić naszą cechę szeregiem cech $\x$.
++ mieszane -- budujemy model, a następnie przeważamy wyniki do znanych wartości globalnych
+
 
 Niech $U=\{1, 2, ..., N\}$ oznacza populację generalną, a $Y$ oznacza cechę, którą badamy (np. liczba osób pracujących w pełnym wymiarze czasu). Niech $y_i$ oznacza wartości cechy obserwowane dla każdej jednostki populacji. Założmy, że celem jest oszacowanie wartości średniej w populacji
 
@@ -161,6 +168,8 @@ Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):
 + post-stratyfikacja (płeć x grupy wieku) -- `r round(prac_wiek[[1]]*100,2)` % (obciązenie= `r round(prac_wiek[[1]]*100,2) - 68.7`) 
 
 ## Kalibracja
+
+
 
 ## Propensity score weighting
 
