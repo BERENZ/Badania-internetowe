@@ -170,8 +170,78 @@ Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):
 ## Kalibracja
 
 
-
 ## Propensity score weighting
+
+### Poszukiwanie zmiennych diagnostycznych
+
+W związku z tym, że naszym celem jest oszacowanie modelu skłonności do odpowiedzi (ang. *response propensity*) gdzie zmienna $R = \{ 0, 1 \}$
+
+
+$$
+P(R_i = 1 | \boldsymbol{X}_i, I_i = 1),
+$$
+
+gdzie $I_i$ to zmienna określająca czy dana osoba korzysta z Internetu, a $\boldsymbol{X}_i$ to zestaw cech opisujących daną jednostkę. Kolejnym etapem jest sprawdzenie, które zmienne związane są ze skłonnością do odpowiedzi. Możemy to zweryfikować biorąc pod uwagę dwie grupy
+
+1. Zmienne objaśniane mają charater jakościowy (np. płeć, grupy wieku, województwo)
+    + test t-studenta (test parametryczny, porównanie dwóch średnich), funkcja `t.test()`
+    + test Manna-Whitneya (test nieparametryczny, porównanie dwóch rozkładów), funkcja `wilcox.test()`
+
+
+2. Zmienne objaśniane mają charakter ilościowy (np. wiek, dochody, czas odpowiedzi)
+    + Test proporcji (ma sens w tabeli $2 \times 2$), funkcja `prop.test()` -- zastosowanie w przypadku dwóch zmiennych
+    + (Dokładny) test Fishera (zwykle dla tabel $2 \times 2$ i małych prób), funkcja `fisher.test()` 
+    + Ilorazy szans, funkcja `vcd::oddsratio()` oraz  test Woolf'a dla tabel $2 \times 2 \times K$, funkcja `vcd::woolf_test()` 
+    + Testy oparte na statystyce $\chi^2$ -- więcej o tej grupie poniżej, m.in. funkcja `chisq.test()`
+    + Test Cochrana-Mantela-Haenszel'a -- tylko jeżeli dwie zmienne są na skali porządkowej, funkcja `mantelhaen.test`
+    + Uogólniony test Cochrana-Mantela-Haenszel'a -- stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną (zmienne mogą mieć charakter zarówno nominalny, jak i porządkowy) -- funkcja `CMHtest() `z pakietu `vcdExtra`. Warto też zapoznać się z pakietem `coin`, który zawiera funkcje `cmh_test`.
+
+Miary zależności:
+
++ współczynnik Yule’a -- dwie zmienne, mające porządek (tak, nie) i traktujemy symetryczne (zmiana porządku w tabeli nie wpływa na statystykę)
++ współczynnik C Pearsona -- dwie zmienne, nie mają porządku, traktujemy symetrycznie (odnosi się do tej i poniższych dwóch)
++ współczynnik V Cramera,
++ współczynnik T Czupurowa,
++ Goodman-Kruskal $\gamma$ -- dla zmiennych na skali porządkowej
+
+
+#### Opis procedur testowych
+
+1.  Mantela-Haenszel'a $\chi^2$
+
+Wykorzystujemy tylko wtedy jeżeli dane są na skali porządkowej! Hipoteza alternatywna jest liniowa zależność między
+
+$$
+Q_{MH} = (n-1) r^2 \sim \chi^2(1),
+$$
+
+gdzie $n$ to wielkość próby, a $r$ to współczynnik korelacji liniowej Pearsona. Statystykę tę możemy wykorzystać do weryfikacji następującego układu hipotez
+
++ $H_0$: brak związku między zmiennymi,
++ $H_1$: występuje związek między zmiennymi.
+
+Możemy ją zbadać wykorzystując funkcję `vcdExtra::CMHtest()`
+
+
+2. Uogólniony test Cochrana-Mantela-Haenszel'a
+
+Zakładamy tabelę $2\times2\times K$ 
+
+$$
+Q_{CMH}=\frac{\left[ \sum_{k} (n_{11k}-\mu_{11k}) \right]^2}{\sum_{k}var(n_{11k})}
+$$
+
+gdzie 
+
+$$
+\mu_{11k} = E(n_{11k}) = n_{1+k}n_{+1k}/n_{++k},
+$$
+
+$$
+var(n_{11k}) = \frac{n_{1+k}n_{2+k}n_{+1k}n_{+2k}}{n^2_{++k}(n_{++k}-1)}
+$$
+
+Obliczamy ja korzystając z funkcji `vcdExtra::CMHtest`
 
 ### Regresja logistyczna
 

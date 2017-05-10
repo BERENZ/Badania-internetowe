@@ -25,7 +25,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-04-10">
+<meta name="date" content="2017-05-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -176,7 +176,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.3</b> Kalibracja</a></li>
 <li class="chapter" data-level="8.4" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#regresja-logistyczna"><i class="fa fa-check"></i><b>8.4.1</b> Regresja logistyczna</a></li>
+<li class="chapter" data-level="8.4.1" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#poszukiwanie-zmiennych-diagnostycznych"><i class="fa fa-check"></i><b>8.4.1</b> Poszukiwanie zmiennych diagnostycznych</a></li>
+<li class="chapter" data-level="8.4.2" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#regresja-logistyczna"><i class="fa fa-check"></i><b>8.4.2</b> Regresja logistyczna</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.5</b> Dalsze kroki</a></li>
 </ul></li>
@@ -234,30 +235,30 @@ zalando_df &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(zaland
 <span class="kw">str</span>(zalando_df,<span class="dv">1</span>)</code></pre></div>
 <pre><code>## List of 5
 ##  $ content      :&#39;data.frame&#39;:   20 obs. of  18 variables:
-##  $ totalElements: int 235356
-##  $ totalPages   : int 11768
+##  $ totalElements: int 212656
+##  $ totalPages   : int 10633
 ##  $ page         : int 1
 ##  $ size         : int 20</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(zalando_df$content,<span class="dv">1</span>)</code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  18 variables:
-##  $ id             : chr  &quot;M5921I0BX-E11&quot; &quot;RI921C04A-Q11&quot; &quot;IC141G00S-Q11&quot; &quot;VC122D01I-K11&quot; ...
-##  $ modelId        : chr  &quot;M5921I0BX&quot; &quot;RI921C04A&quot; &quot;IC141G00S&quot; &quot;VC122D01I&quot; ...
-##  $ name           : chr  &quot;Cardigan - jaune moutarde&quot; &quot;Summer dress - black&quot; &quot;YVETTE - Fleece - black&quot; &quot;Shirt - ottanio&quot; ...
-##  $ shopUrl        : chr  &quot;https://www.zalando.co.uk/morgan-cardigan-jaune-moutarde-m5921i0bx-e11.html&quot; &quot;https://www.zalando.co.uk/river-island-summer-dress-black-ri921c04a-q11.html&quot; &quot;https://www.zalando.co.uk/icepeak-yvette-fleece-black-ic141g00s-q11.html&quot; &quot;https://www.zalando.co.uk/versace-collection-shirt-ottanio-vc122d01i-k11.html&quot; ...
-##  $ color          : chr  &quot;Yellow&quot; &quot;Black&quot; &quot;Black&quot; &quot;Blue&quot; ...
+##  $ id             : chr  &quot;UN242E02Z-C11&quot; &quot;TO222O078-A11&quot; &quot;DP529G00Q-G11&quot; &quot;WO322G00O-K11&quot; ...
+##  $ modelId        : chr  &quot;UN242E02Z&quot; &quot;TO222O078&quot; &quot;DP529G00Q&quot; &quot;WO322G00O&quot; ...
+##  $ name           : chr  &quot;STORM RIVAL  - Tracksuit bottoms - grey&quot; &quot;2PACK - Long sleeved top - white/black &quot; &quot;Print T-shirt - pink&quot; &quot;SHADY - Slim fit jeans - petrol blue&quot; ...
+##  $ shopUrl        : chr  &quot;https://www.zalando.co.uk/under-armour-storm-rival-tracksuit-bottoms-grey-un242e02z-c11.html&quot; &quot;https://www.zalando.co.uk/tom-tailor-2pack-long-sleeved-top-to222o078-a11.html&quot; &quot;https://www.zalando.co.uk/dorothy-perkins-print-t-shirt-pink-dp529g00q-g11.html&quot; &quot;https://www.zalando.co.uk/won-hundred-shady-slim-fit-jeans-petrol-blue-wo322g00o-k11.html&quot; ...
+##  $ color          : chr  &quot;Grey&quot; &quot;White&quot; &quot;Red&quot; &quot;Blue&quot; ...
 ##  $ available      : logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-##  $ season         : chr  &quot;SUMMER&quot; &quot;SUMMER&quot; &quot;WINTER&quot; &quot;WINTER&quot; ...
-##  $ seasonYear     : chr  &quot;2017&quot; &quot;2016&quot; &quot;2016&quot; &quot;2016&quot; ...
-##  $ activationDate : chr  &quot;2017-02-16T11:57:24+01:00&quot; &quot;2016-06-02T12:49:09+02:00&quot; &quot;2016-09-02T15:16:47+02:00&quot; &quot;2016-10-25T09:17:39+02:00&quot; ...
+##  $ season         : chr  &quot;WINTER&quot; &quot;WINTER&quot; &quot;WINTER&quot; &quot;WINTER&quot; ...
+##  $ seasonYear     : chr  &quot;2016&quot; &quot;2016&quot; &quot;2016&quot; &quot;2016&quot; ...
+##  $ activationDate : chr  &quot;2016-06-24T11:35:28Z&quot; &quot;2016-06-27T13:59:59Z&quot; &quot;2016-05-11T14:47:20Z&quot; &quot;2016-09-19T10:28:43Z&quot; ...
 ##  $ additionalInfos:List of 20
-##  $ tags           :List of 20
 ##  $ genders        :List of 20
 ##  $ ageGroups      :List of 20
 ##  $ brand          :&#39;data.frame&#39;: 20 obs. of  6 variables:
 ##  $ categoryKeys   :List of 20
 ##  $ attributes     :List of 20
 ##  $ units          :List of 20
-##  $ media          :&#39;data.frame&#39;: 20 obs. of  1 variable:</code></pre>
+##  $ media          :&#39;data.frame&#39;: 20 obs. of  1 variable:
+##  $ tags           :List of 20</code></pre>
 
 </div>
 </div>

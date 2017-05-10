@@ -25,7 +25,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-04-10">
+<meta name="date" content="2017-05-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -176,7 +176,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#kalibracja"><i class="fa fa-check"></i><b>8.3</b> Kalibracja</a></li>
 <li class="chapter" data-level="8.4" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#propensity-score-weighting"><i class="fa fa-check"></i><b>8.4</b> Propensity score weighting</a><ul>
-<li class="chapter" data-level="8.4.1" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#regresja-logistyczna"><i class="fa fa-check"></i><b>8.4.1</b> Regresja logistyczna</a></li>
+<li class="chapter" data-level="8.4.1" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#poszukiwanie-zmiennych-diagnostycznych"><i class="fa fa-check"></i><b>8.4.1</b> Poszukiwanie zmiennych diagnostycznych</a></li>
+<li class="chapter" data-level="8.4.2" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#regresja-logistyczna"><i class="fa fa-check"></i><b>8.4.2</b> Regresja logistyczna</a></li>
 </ul></li>
 <li class="chapter" data-level="8.5" data-path="estymacja-w-badaniach-internetowych-wazenie-danych.html"><a href="estymacja-w-badaniach-internetowych-wazenie-danych.html#dalsze-kroki-2"><i class="fa fa-check"></i><b>8.5</b> Dalsze kroki</a></li>
 </ul></li>
@@ -389,8 +390,52 @@ prac_wiek &lt;-<span class="st"> </span>diagnoza_pracujacy %&gt;%
 </div>
 <div id="propensity-score-weighting" class="section level2">
 <h2><span class="header-section-number">8.4</span> Propensity score weighting</h2>
+<div id="poszukiwanie-zmiennych-diagnostycznych" class="section level3">
+<h3><span class="header-section-number">8.4.1</span> Poszukiwanie zmiennych diagnostycznych</h3>
+<p>W związku z tym, że naszym celem jest oszacowanie modelu skłonności do odpowiedzi (ang. <em>response propensity</em>) gdzie zmienna <span class="math inline">\(R = \{ 0, 1 \}\)</span></p>
+<p><span class="math display">\[
+P(R_i = 1 | \boldsymbol{X}_i, I_i = 1),
+\]</span></p>
+<p>gdzie <span class="math inline">\(I_i\)</span> to zmienna określająca czy dana osoba korzysta z Internetu, a <span class="math inline">\(\boldsymbol{X}_i\)</span> to zestaw cech opisujących daną jednostkę. Kolejnym etapem jest sprawdzenie, które zmienne związane są ze skłonnością do odpowiedzi. Możemy to zweryfikować biorąc pod uwagę dwie grupy</p>
+<ol style="list-style-type: decimal">
+<li>Zmienne objaśniane mają charater jakościowy (np. płeć, grupy wieku, województwo)
+<ul>
+<li>test t-studenta (test parametryczny, porównanie dwóch średnich), statystyka testowa ma postać:</li>
+</ul>
+<p><span class="math display">\[
+t = \frac{\mu_1 - \mu_2}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}} }
+\]</span></p>
+<ul>
+<li>test Manna-Whitneya (test nieparametryczny, porównanie dwóch rozkładów)</li>
+</ul></li>
+<li><p>Zmienne objaśniane mają charakter ilościowy (np. wiek, dochody, czas odpowiedzi)</p></li>
+</ol>
+<p>Aby zbadać zależność między dwoma i więcej zmiennymi możemy wykorzystać następujące testy:</p>
+<ul>
+<li>Test proporcji (ma sens w tabeli <span class="math inline">\(2 \times 2\)</span>),</li>
+<li>Testy oparte na statystyce <span class="math inline">\(\chi^2\)</span>:
+<ul>
+<li>Test niezależności <span class="math inline">\(\chi^2\)</span>,</li>
+<li>Test niezależności <span class="math inline">\(\chi^2\)</span> z poprawką Yates’a (dla małych prób, kwestia przybliżenia rozkładu dwumianowego rozkładem <span class="math inline">\(\chi^2\)</span>),</li>
+<li>statystyka największej wiarygodności <span class="math inline">\(L^2\)</span> (badamy równość proporcji),</li>
+<li>statystyka Cressie-Read’a (CR),</li>
+<li>test (Cochrana-)Mantel-Haenszel <span class="math inline">\(\chi^2\)</span> – stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną.</li>
+</ul></li>
+<li>(Dokładny) test Fishera (zwykle dla tabel <span class="math inline">\(2 \times 2\)</span> i małych prób),</li>
+<li>Test Mantela-Haenszel’a <span class="math inline">\(\chi^2\)</span> – tylko jeżeli dwie zmienne są na skali porządkowej</li>
+</ul>
+<p>Miary zależności:</p>
+<ul>
+<li>współczynnik Yule’a – dwie zmienne, mające porządek (tak, nie) i traktujemy symetryczne (zmiana porządku w tabeli nie wpływa na statystykę)</li>
+<li>współczynnik C Pearsona – dwie zmienne, nie mają porządku, traktujemy symetrycznie (odnosi się do tej i poniższych dwóch)</li>
+<li>współczynnik V Cramera,</li>
+<li>współczynnik T Czupurowa,</li>
+<li>Goodman-Kruskal <span class="math inline">\(\gamma\)</span> – dla zmiennych na skali porządkowej (<code>vcdExtra::GKgamma</code>)</li>
+</ul>
+<p>Więcej na – <a href="http://node101.psych.cornell.edu/Darlington/crosstab/TABLE0.HTM" class="uri">http://node101.psych.cornell.edu/Darlington/crosstab/TABLE0.HTM</a></p>
+</div>
 <div id="regresja-logistyczna" class="section level3">
-<h3><span class="header-section-number">8.4.1</span> Regresja logistyczna</h3>
+<h3><span class="header-section-number">8.4.2</span> Regresja logistyczna</h3>
 <p>Funkcją logistyczną nazywamy funkcję postaci:</p>
 <p><span class="math display">\[
 f\left(x\right)=\frac{1}{1+e^{-x}}=\frac{e^{x}}{1+e^{x}}
