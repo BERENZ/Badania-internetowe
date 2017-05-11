@@ -237,9 +237,13 @@ doubledecker(internet ~ wiek, diagnoza2015)
 boxplot(wiek ~ internet, diagnoza2015)
 var.test(wiek ~ internet, diagnoza2015)
 t.test(wiek ~ internet, diagnoza2015)
-wilcox.test(wiek ~ internet, diagnoza2015)
 ```
 
+Porównanie median
+
+```{r}
+by(diagnoza2015$wiek,diagnoza2015$internet, median)
+```
 
 3.  Mantela-Haenszel'a $\chi^2$
 
