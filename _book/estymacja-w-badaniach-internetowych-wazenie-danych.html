@@ -25,7 +25,7 @@
 <meta name="author" content="Maciej Beręsewicz">
 
 
-<meta name="date" content="2017-05-10">
+<meta name="date" content="2017-05-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -286,10 +286,10 @@ B(\bar{y}_{S,ps}) = \frac{1}{N} \sum_{h=1}^{L} N_h \frac{R_{\rho{y}}^{(h)} S_{\r
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proba_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(wiek &lt;=<span class="st"> </span><span class="dv">59</span>) %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>)) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca))
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">m =</span> <span class="kw">mean</span>(praca))
 proba_pracujacy</code></pre></div>
 <pre><code>## # A tibble: 1 × 1
-##       praca
+##           m
 ##       &lt;dbl&gt;
 ## 1 0.6769874</code></pre>
 <p>Liczba pracujących wyniosła 67.7% w przypadku gdy oszacowanie przedstawimy na podstawie próby bez żadnej korekty. Następnie dokonamy korekty z wykorzystaniem informacji o wielkości populacji w poszczególnych warstwach. W pierwszej kolejności oszacujemy średnie według płci oraz województw.</p>
@@ -298,7 +298,7 @@ diagnoza_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
 <span class="st">  </span><span class="kw">filter</span>(wiek &lt;=<span class="st"> </span><span class="dv">59</span>) %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>)) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(plec, woj) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca))
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca))
 
 diagnoza_pracujacy</code></pre></div>
 <pre><code>## Source: local data frame [32 x 3]
@@ -347,7 +347,7 @@ populacja_N</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">proba_pracujacy_korekta &lt;-<span class="st"> </span>diagnoza_pracujacy %&gt;%
 <span class="st">  </span><span class="kw">left_join</span>(populacja_N) %&gt;%
 <span class="st">  </span><span class="kw">ungroup</span>() %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
 <pre><code>## Joining, by = c(&quot;plec&quot;, &quot;woj&quot;)</code></pre>
 <p>Liczba pracujących po korekcie wyniosła 68.31%, a przed 67.7% podczas gdy wartość w populacji wynosiła 68.7% (+/ 0.4 pp). Spójrzmy co będzie jeżeli użyjemy płci i wieku.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## w latach według grup wieku
@@ -366,7 +366,7 @@ diagnoza_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">praca =</span> <span class="kw">as.numeric</span>(czy_praca ==<span class="st"> </span><span class="dv">1</span>),
          <span class="dt">wiek_cat =</span> <span class="kw">cut</span>(<span class="dt">x =</span> wiek, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">15</span>,<span class="dv">20</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">35</span>,<span class="dv">40</span>,<span class="dv">45</span>,<span class="dv">50</span>,<span class="dv">55</span>,<span class="dv">60</span>),<span class="dt">include.lowest =</span> T, <span class="dt">right =</span> F)) %&gt;%
 <span class="st">  </span><span class="kw">group_by</span>(wiek_cat, plec) %&gt;%
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca)) %&gt;%
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">praca =</span> <span class="kw">mean</span>(praca)) %&gt;%
 <span class="st">  </span><span class="kw">ungroup</span>() %&gt;%
 <span class="st">  </span><span class="kw">mutate</span>(<span class="dt">wiek =</span> <span class="kw">as.numeric</span>(wiek_cat)) %&gt;%
 <span class="st">  </span><span class="kw">select</span>(wiek, plec, praca)
@@ -375,7 +375,7 @@ diagnoza_pracujacy &lt;-<span class="st"> </span>diagnoza2015 %&gt;%
 prac_wiek &lt;-<span class="st"> </span>diagnoza_pracujacy %&gt;%
 <span class="st">  </span><span class="kw">left_join</span>(populacja_N) %&gt;%
 <span class="st">  </span><span class="kw">ungroup</span>() %&gt;%<span class="st"> </span>
-<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
+<span class="st">  </span><span class="kw">summarize</span>(<span class="dt">prac =</span> <span class="kw">weighted.mean</span>(<span class="dt">x =</span> praca, <span class="dt">w =</span> n))</code></pre></div>
 <pre><code>## Joining, by = c(&quot;wiek&quot;, &quot;plec&quot;)</code></pre>
 <p>Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):</p>
 <ul>
@@ -400,39 +400,116 @@ P(R_i = 1 | \boldsymbol{X}_i, I_i = 1),
 <ol style="list-style-type: decimal">
 <li>Zmienne objaśniane mają charater jakościowy (np. płeć, grupy wieku, województwo)
 <ul>
-<li>test t-studenta (test parametryczny, porównanie dwóch średnich), statystyka testowa ma postać:</li>
-</ul>
-<p><span class="math display">\[
-t = \frac{\mu_1 - \mu_2}{\sqrt{\frac{s^2_1}{n_1} + \frac{s^2_2}{n_2}} }
-\]</span></p>
-<ul>
-<li>test Manna-Whitneya (test nieparametryczny, porównanie dwóch rozkładów)</li>
+<li>test t-studenta (test parametryczny, porównanie dwóch średnich), funkcja <code>t.test()</code></li>
+<li>test Manna-Whitneya (test nieparametryczny, porównanie dwóch rozkładów), funkcja <code>wilcox.test()</code></li>
 </ul></li>
-<li><p>Zmienne objaśniane mają charakter ilościowy (np. wiek, dochody, czas odpowiedzi)</p></li>
+<li>Zmienne objaśniane mają charakter ilościowy (np. wiek, dochody, czas odpowiedzi)
+<ul>
+<li>Test proporcji (ma sens w tabeli <span class="math inline">\(2 \times 2\)</span>), funkcja <code>prop.test()</code> – zastosowanie w przypadku dwóch zmiennych</li>
+<li>(Dokładny) test Fishera (zwykle dla tabel <span class="math inline">\(2 \times 2\)</span> i małych prób), funkcja <code>fisher.test()</code></li>
+<li>Ilorazy szans, funkcja <code>vcd::oddsratio()</code> oraz test Woolf’a dla tabel <span class="math inline">\(2 \times 2 \times K\)</span>, funkcja <code>vcd::woolf_test()</code></li>
+<li>Testy oparte na statystyce <span class="math inline">\(\chi^2\)</span> – więcej o tej grupie poniżej, m.in. funkcja <code>chisq.test()</code></li>
+<li>Test Cochrana-Mantela-Haenszel’a – tylko jeżeli dwie zmienne są na skali porządkowej, funkcja <code>mantelhaen.test</code></li>
+<li>Uogólniony test Cochrana-Mantela-Haenszel’a – stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną (zmienne mogą mieć charakter zarówno nominalny, jak i porządkowy) – funkcja <code>CMHtest()</code>z pakietu <code>vcdExtra</code>. Warto też zapoznać się z pakietem <code>coin</code>, który zawiera funkcje <code>cmh_test</code>.</li>
+</ul></li>
 </ol>
-<p>Aby zbadać zależność między dwoma i więcej zmiennymi możemy wykorzystać następujące testy:</p>
-<ul>
-<li>Test proporcji (ma sens w tabeli <span class="math inline">\(2 \times 2\)</span>),</li>
-<li>Testy oparte na statystyce <span class="math inline">\(\chi^2\)</span>:
-<ul>
-<li>Test niezależności <span class="math inline">\(\chi^2\)</span>,</li>
-<li>Test niezależności <span class="math inline">\(\chi^2\)</span> z poprawką Yates’a (dla małych prób, kwestia przybliżenia rozkładu dwumianowego rozkładem <span class="math inline">\(\chi^2\)</span>),</li>
-<li>statystyka największej wiarygodności <span class="math inline">\(L^2\)</span> (badamy równość proporcji),</li>
-<li>statystyka Cressie-Read’a (CR),</li>
-<li>test (Cochrana-)Mantel-Haenszel <span class="math inline">\(\chi^2\)</span> – stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną.</li>
-</ul></li>
-<li>(Dokładny) test Fishera (zwykle dla tabel <span class="math inline">\(2 \times 2\)</span> i małych prób),</li>
-<li>Test Mantela-Haenszel’a <span class="math inline">\(\chi^2\)</span> – tylko jeżeli dwie zmienne są na skali porządkowej</li>
-</ul>
 <p>Miary zależności:</p>
 <ul>
 <li>współczynnik Yule’a – dwie zmienne, mające porządek (tak, nie) i traktujemy symetryczne (zmiana porządku w tabeli nie wpływa na statystykę)</li>
 <li>współczynnik C Pearsona – dwie zmienne, nie mają porządku, traktujemy symetrycznie (odnosi się do tej i poniższych dwóch)</li>
 <li>współczynnik V Cramera,</li>
 <li>współczynnik T Czupurowa,</li>
-<li>Goodman-Kruskal <span class="math inline">\(\gamma\)</span> – dla zmiennych na skali porządkowej (<code>vcdExtra::GKgamma</code>)</li>
+<li>Goodman-Kruskal <span class="math inline">\(\gamma\)</span> – dla zmiennych na skali porządkowej</li>
 </ul>
-<p>Więcej na – <a href="http://node101.psych.cornell.edu/Darlington/crosstab/TABLE0.HTM" class="uri">http://node101.psych.cornell.edu/Darlington/crosstab/TABLE0.HTM</a></p>
+<div id="opis-procedur-testowych" class="section level4">
+<h4><span class="header-section-number">8.4.1.1</span> Opis procedur testowych</h4>
+<ol style="list-style-type: decimal">
+<li>Test <span class="math inline">\(\chi^2\)</span></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab1 &lt;-<span class="st"> </span><span class="kw">xtabs</span>(~internet +<span class="st"> </span>plec, <span class="dt">data =</span> diagnoza2015)
+<span class="kw">chisq.test</span>(tab1)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  tab1
+## X-squared = 120.33, df = 1, p-value &lt; 2.2e-16</code></pre>
+<p>Wynik testu: występuje zależność miedzy korzystaniem z internetu, a płcią.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab2 &lt;-<span class="st"> </span><span class="kw">xtabs</span>(~internet +<span class="st"> </span>klm, <span class="dt">data =</span> diagnoza2015)
+<span class="kw">chisq.test</span>(tab2)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab2
+## X-squared = 615.71, df = 5, p-value &lt; 2.2e-16</code></pre>
+<p>Wynik testu: występuje zależność miedzy korzystaniem z internetu, a klasą wielkości miejscowości. Dodatkowo należy zauważyć, że statystyka jest ponad 5 razy większa od tej dla płci.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tab3 &lt;-<span class="st"> </span><span class="kw">xtabs</span>(~internet +<span class="st"> </span>woj, <span class="dt">data =</span> diagnoza2015)
+<span class="kw">chisq.test</span>(tab3)</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  tab3
+## X-squared = 144.82, df = 15, p-value &lt; 2.2e-16</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>Test t-Studenta (porównanie dwóch średnich)</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">doubledecker</span>(internet ~<span class="st"> </span>wiek, diagnoza2015)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">boxplot</span>(wiek ~<span class="st"> </span>internet, diagnoza2015)</code></pre></div>
+<p><img src="bookdown-demo_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">var.test</span>(wiek ~<span class="st"> </span>internet, diagnoza2015)</code></pre></div>
+<pre><code>## 
+##  F test to compare two variances
+## 
+## data:  wiek by internet
+## F = 1.7955, num df = 11324, denom df = 3987, p-value &lt; 2.2e-16
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  1.705577 1.888914
+## sample estimates:
+## ratio of variances 
+##           1.795474</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(wiek ~<span class="st"> </span>internet, diagnoza2015)</code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  wiek by internet
+## t = -70.791, df = 9311.8, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -14.07763 -13.31901
+## sample estimates:
+## mean in group 1 mean in group 2 
+##        37.44962        51.14794</code></pre>
+<p>Wynik testu: występuje zależność miedzy korzystaniem z internetu, a województwem.</p>
+<ol style="list-style-type: decimal">
+<li>Mantela-Haenszel’a <span class="math inline">\(\chi^2\)</span></li>
+</ol>
+<p>Wykorzystujemy tylko wtedy jeżeli dane są na skali porządkowej! Hipoteza alternatywna jest liniowa zależność między</p>
+<p><span class="math display">\[
+Q_{MH} = (n-1) r^2 \sim \chi^2(1),
+\]</span></p>
+<p>gdzie <span class="math inline">\(n\)</span> to wielkość próby, a <span class="math inline">\(r\)</span> to współczynnik korelacji liniowej Pearsona. Statystykę tę możemy wykorzystać do weryfikacji następującego układu hipotez</p>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: brak związku między zmiennymi,</li>
+<li><span class="math inline">\(H_1\)</span>: występuje związek między zmiennymi.</li>
+</ul>
+<p>Możemy ją zbadać wykorzystując funkcję <code>vcdExtra::CMHtest()</code></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Uogólniony test Cochrana-Mantela-Haenszel’a</li>
+</ol>
+<p>Zakładamy tabelę <span class="math inline">\(2\times2\times K\)</span></p>
+<p><span class="math display">\[
+Q_{CMH}=\frac{\left[ \sum_{k} (n_{11k}-\mu_{11k}) \right]^2}{\sum_{k}var(n_{11k})}
+\]</span></p>
+<p>gdzie</p>
+<p><span class="math display">\[
+\mu_{11k} = E(n_{11k}) = n_{1+k}n_{+1k}/n_{++k},
+\]</span></p>
+<p><span class="math display">\[
+var(n_{11k}) = \frac{n_{1+k}n_{2+k}n_{+1k}n_{+2k}}{n^2_{++k}(n_{++k}-1)}
+\]</span></p>
+<p>Obliczamy ja korzystając z funkcji <code>vcdExtra::CMHtest</code></p>
+</div>
 </div>
 <div id="regresja-logistyczna" class="section level3">
 <h3><span class="header-section-number">8.4.2</span> Regresja logistyczna</h3>

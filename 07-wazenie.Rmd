@@ -90,7 +90,7 @@ Załóżmy, że naszym celem jest oszacowanie liczby osób pracujących w 2015 r
 proba_pracujacy <- diagnoza2015 %>%
   filter(wiek <= 59) %>%
   mutate(praca = as.numeric(czy_praca == 1)) %>%
-  summarise(praca = mean(praca))
+  summarize(m = mean(praca))
 proba_pracujacy
 ```
 
@@ -102,7 +102,7 @@ diagnoza_pracujacy <- diagnoza2015 %>%
   filter(wiek <= 59) %>%
   mutate(praca = as.numeric(czy_praca == 1)) %>%
   group_by(plec, woj) %>%
-  summarise(praca = mean(praca))
+  summarize(praca = mean(praca))
 
 diagnoza_pracujacy
 ```
@@ -127,7 +127,7 @@ Następnie dołączymy te informacje do próby i dokonamy szacunku
 proba_pracujacy_korekta <- diagnoza_pracujacy %>%
   left_join(populacja_N) %>%
   ungroup() %>% 
-  summarise(prac = weighted.mean(x = praca, w = n))
+  summarize(prac = weighted.mean(x = praca, w = n))
 ```
 
 Liczba pracujących po korekcie wyniosła `r round(proba_pracujacy_korekta[[1]]*100,2)`%, a przed `r round(proba_pracujacy[[1]]*100,2)`% podczas gdy wartość w populacji wynosiła 68.7% (+/ 0.4 pp). Spójrzmy co będzie jeżeli użyjemy płci i wieku.
@@ -149,7 +149,7 @@ diagnoza_pracujacy <- diagnoza2015 %>%
   mutate(praca = as.numeric(czy_praca == 1),
          wiek_cat = cut(x = wiek, breaks = c(15,20,25,30,35,40,45,50,55,60),include.lowest = T, right = F)) %>%
   group_by(wiek_cat, plec) %>%
-  summarise(praca = mean(praca)) %>%
+  summarize(praca = mean(praca)) %>%
   ungroup() %>%
   mutate(wiek = as.numeric(wiek_cat)) %>%
   select(wiek, plec, praca)
@@ -158,7 +158,7 @@ diagnoza_pracujacy <- diagnoza2015 %>%
 prac_wiek <- diagnoza_pracujacy %>%
   left_join(populacja_N) %>%
   ungroup() %>% 
-  summarise(prac = weighted.mean(x = praca, w = n))
+  summarize(prac = weighted.mean(x = praca, w = n))
 ```
 
 Podsumowując nasze oszacowania (wartość prawdziwa wynosiła 68.7%):
@@ -194,7 +194,7 @@ gdzie $I_i$ to zmienna określająca czy dana osoba korzysta z Internetu, a $\bo
     + Ilorazy szans, funkcja `vcd::oddsratio()` oraz  test Woolf'a dla tabel $2 \times 2 \times K$, funkcja `vcd::woolf_test()` 
     + Testy oparte na statystyce $\chi^2$ -- więcej o tej grupie poniżej, m.in. funkcja `chisq.test()`
     + Test Cochrana-Mantela-Haenszel'a -- tylko jeżeli dwie zmienne są na skali porządkowej, funkcja `mantelhaen.test`
-    + Uogólniony test Cochrana-Mantela-Haenszel'a -- stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną (zmienne mogą mieć charakter zarówno nominalny, jak i porządkowy) -- funkcja `CMHtest() `z pakietu `vcdExtra`. Warto też zapoznać się z pakietem `coin`, który zawiera funkcje `cmh_test`.
+    + Uogólniony test Cochrana-Mantela-Haenszel'a -- stosujemy dla 3 zmiennych: zakładamy, że dwie zmienne są warunkowo niezależne, w warstwach utworzonych przez trzecią zmienną (zmienne mogą mieć charakter zarówno nominalny, jak i porządkowy) -- funkcja `mantelhaen.test`, `CMHtest() `z pakietu `vcdExtra`. Warto też zapoznać się z pakietem `coin`, który zawiera funkcje `cmh_test`.
 
 Miary zależności:
 
@@ -207,7 +207,41 @@ Miary zależności:
 
 #### Opis procedur testowych
 
-1.  Mantela-Haenszel'a $\chi^2$
+1. Test $\chi^2$
+
+```{r}
+tab1 <- xtabs(~internet + plec, data = diagnoza2015)
+chisq.test(tab1)
+```
+
+Wynik testu: występuje zależność miedzy korzystaniem z internetu, a płcią.
+
+```{r}
+tab2 <- xtabs(~internet + klm, data = diagnoza2015)
+chisq.test(tab2)
+```
+
+Wynik testu: występuje zależność miedzy korzystaniem z internetu, a klasą wielkości miejscowości. Dodatkowo należy zauważyć, że statystyka jest ponad 5 razy większa od tej dla płci. 
+
+```{r}
+tab3 <- xtabs(~internet + woj, data = diagnoza2015)
+chisq.test(tab3)
+```
+
+Wynik testu: występuje zależność miedzy korzystaniem z internetu, a województwem. 
+
+2. Test t-Studenta (porównanie dwóch średnich)
+
+```{r}
+doubledecker(internet ~ wiek, diagnoza2015)
+boxplot(wiek ~ internet, diagnoza2015)
+var.test(wiek ~ internet, diagnoza2015)
+t.test(wiek ~ internet, diagnoza2015)
+wilcox.test(wiek ~ internet, diagnoza2015)
+```
+
+
+3.  Mantela-Haenszel'a $\chi^2$
 
 Wykorzystujemy tylko wtedy jeżeli dane są na skali porządkowej! Hipoteza alternatywna jest liniowa zależność między
 
@@ -222,8 +256,15 @@ gdzie $n$ to wielkość próby, a $r$ to współczynnik korelacji liniowej Pears
 
 Możemy ją zbadać wykorzystując funkcję `vcdExtra::CMHtest()`
 
+```{r}
+doubledecker(internet~woj+plec, diagnoza2015)
+tab3 <- xtabs(~internet+plec+woj,diagnoza2015)
+mantelhaen.test(tab3)
+woolf_test(tab3) ## czy można stosować test CMH ?
+```
 
-2. Uogólniony test Cochrana-Mantela-Haenszel'a
+
+3. Uogólniony test Cochrana-Mantela-Haenszel'a
 
 Zakładamy tabelę $2\times2\times K$ 
 
@@ -242,6 +283,13 @@ var(n_{11k}) = \frac{n_{1+k}n_{2+k}n_{+1k}n_{+2k}}{n^2_{++k}(n_{++k}-1)}
 $$
 
 Obliczamy ja korzystając z funkcji `vcdExtra::CMHtest`
+
+```{r}
+diagnoza2015$wiek_4g <- cut(diagnoza2015$wiek,quantile(diagnoza2015$wiek))
+tab4 <- xtabs(~internet+wiek_4g+woj,diagnoza2015)
+mantelhaen.test(tab4)
+```
+
 
 ### Regresja logistyczna
 

@@ -22,7 +22,8 @@ library(stringi)
 library(lubridate)
 library(jsonlite)
 library(readxl)
-knitr::opts_chunk$set(cache = FALSE, echo = TRUE)
+library(vcdExtra)
+knitr::opts_chunk$set(cache = TRUE, echo = TRUE)
 theme_set(theme_bw())
 ```
 
