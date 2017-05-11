@@ -237,6 +237,7 @@ doubledecker(internet ~ wiek, diagnoza2015)
 boxplot(wiek ~ internet, diagnoza2015)
 var.test(wiek ~ internet, diagnoza2015)
 t.test(wiek ~ internet, diagnoza2015)
+wilcox.test(wiek ~ internet, diagnoza2015)
 ```
 
 Porównanie median
